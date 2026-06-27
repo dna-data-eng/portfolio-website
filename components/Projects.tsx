@@ -1,0 +1,83 @@
+import React from "react";
+
+export default function Projects() {
+  const projectList = [
+    {
+      title: "Weather Pipeline",
+      description:
+        "A serverless ETL pipeline processing global weather updates every 15 minutes with automated anomaly detection.",
+      tags: ["Python", "AWS", "Snowflake"],
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuCm_nFM9xJ5JeWylTD5EQkU5qS3w4yubzihxaIbmir9TfGbv7hdYqkT8loOoAl20ZW3hMgJ1UXKafzt5ICvddDEulFo5RCGseV8tUJeSf8oaPC7RHH_QXJiXAND9JyDX4quUlbOZNjFQhNgcNxMpW-dY87q6HbvoeCxKumUI3jjQyKDLqy0lW2_qaC6OXrkwT7NmvJXwsK-ZwnXYcPvZv0FEvGuu3wiBROQ6Kren3-E2WjdDsacjUKr4Cl2LcRJnufZOCBt8U3pBIy3",
+    },
+    {
+      title: "Ghana Economic Dashboard",
+      description:
+        "Visualizing national fiscal data through a custom-built API and real-time frontend dashboard.",
+      tags: ["PostgreSQL", "React", "D3.js"],
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuB_uyFtR5AuZqGLw8550oEYLxTQNfzEArKntmIkCzZ4dqqzUfTbnxXFdeSJxr4tpc_NzlDJHRmPlDmeFP_5ht0_HaX1r4H2rKc3j7IxS8QOvZ2JoyCanyEIkmpMCqVj4uIvu1Nu6KwxDTjq6p8073foUm0KaSxGZYyY-esV5XsC0e_VkjpqUgA6dBBIE9jpP2qY8W7nLIX0l6-Gte34qCY10hfJM_WIW6tBzsRyywy-StP9sXkoyGdA6wbQJ6S6qU_iaMp1npOS__yV",
+    },
+    {
+      title: "GitHub Activity Tracker",
+      description:
+        "Aggregating and analyzing commit patterns across large-scale open-source repositories.",
+      tags: ["Go", "Redis", "Docker"],
+      image:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuC7WNEMlueNi0zqmVNRQviAq3JyuiuLKn0IQcekJfQR_LL-usG6NtRpXxay6pBRC0iMQmVvdNGJQxg1PWQjagE8QorxKCVVSkidZJCjDNhzVDuLEBms4rD0e7d-eyXYswR8jmRCimM5tS5PEOEmAZSmaR0CPl7x4UibIEXOYhqZwkE8QYorI2cT05hhLtVC1U3-3An6Mb4PD0Ey_ilh2Fm49Z3LifjjqbXGQdE2HL5xICKM8ISUCgHt_JAJpD-EqcWYI9Bh2mVBrxL0",
+    },
+  ];
+
+  return (
+    <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="projects">
+      <div className="mb-12">
+        <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-2">Projects</h2>
+        <p className="text-[#888888]">Engineered solutions for complex data environments.</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projectList.map((project, idx) => (
+          <article
+            key={idx}
+            className="bg-[#111111] border border-[#1f1f1f] flex flex-col hover:border-[#00ff88] transition-colors duration-300 overflow-hidden"
+          >
+            <div className="h-48 bg-[#121414] overflow-hidden">
+              <div
+                className="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
+                style={{ backgroundImage: `url('${project.image}')` }}
+              ></div>
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <h3 className="font-headline-lg text-xl text-[#e3e2e2] mb-3">{project.title}</h3>
+              <p className="text-[#888888] text-sm mb-6 flex-1">{project.description}</p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="bg-[#1f1f1f] text-[#888888] font-label-sm text-[10px] px-3 py-1 rounded-full uppercase tracking-widest"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-4 border-t border-[#3b4b3d] pt-6">
+                <a
+                  className="flex-1 bg-[#00ff88] text-[#003919] text-center py-2 font-metric-lg text-xs hover:opacity-90 active:scale-95 transition-all"
+                  href="#"
+                >
+                  VIEW LIVE
+                </a>
+                <a
+                  className="flex-1 border border-[#3b4b3d] text-[#888888] text-center py-2 font-metric-lg text-xs hover:border-[#00ff88] hover:text-[#00ff88] active:scale-95 transition-all"
+                  href="#"
+                >
+                  GITHUB
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 import PipelineShowcase from "@/components/PipelineShowcase";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
@@ -16,7 +17,6 @@ export default function Home() {
   const [fileUrl, setFileUrl] = useState("");
 
   const openModal = (type: "cv" | "resume", url: string) => {
-    console.log("openModal called", type, url);
     setModalType(type);
     setFileUrl(url);
     setModalOpen(true);
@@ -59,6 +59,7 @@ export default function Home() {
       <Navbar />
       <main className="relative z-10 pt-24">
         <Hero onOpenModal={openModal} />
+        <About />
         <PipelineShowcase />
         <Projects />
         <Skills />
@@ -67,9 +68,9 @@ export default function Home() {
 
       <footer className="w-full py-section-gap bg-[#0a0a0a] border-t border-[#1f1f1f]">
         <div className="flex flex-col items-center gap-4 w-full px-gutter max-w-container-max mx-auto">
-          <div className="flex gap-8">
-            <a className="text-[#888888] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#hero">
-              Hero
+          <div className="flex gap-8 flex-wrap justify-center">
+            <a className="text-[#888888] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#about">
+              About
             </a>
             <a className="text-[#888888] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#pipeline">
               Pipeline
@@ -84,8 +85,8 @@ export default function Home() {
               Contact
             </a>
           </div>
-          <p className="text-[#888888] font-label-sm text-label-sm opacity-80">
-            Built with real data. © 2026
+          <p className="text-[#888888] font-code-md text-label-sm opacity-80">
+            {"// DNA — Dan Nyarkoh Andoh · Data Engineer — Accra, Ghana 🇬🇭"}
           </p>
         </div>
       </footer>
@@ -99,4 +100,3 @@ export default function Home() {
     </>
   );
 }
-

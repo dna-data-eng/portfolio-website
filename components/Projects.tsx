@@ -1,12 +1,19 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+
+type FilterCategory = "all" | "data-engineering";
 
 export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
+
   const projectList = [
     {
       title: "Weather Pipeline",
       description:
-        "A serverless ETL pipeline processing global weather updates every 15 minutes with automated anomaly detection.",
-      tags: ["Python", "AWS", "Snowflake"],
+        "End-to-end pipeline ingesting real-time weather data for Accra via OpenWeatherMap API, storing readings in Supabase PostgreSQL, and visualizing temperature trends live on this dashboard.",
+      tags: ["PostgreSQL", "Python", "Supabase", "OpenWeatherMap", "Next.js", "Recharts"],
+      category: "data-engineering" as const,
       image:
         "https://lh3.googleusercontent.com/aida-public/AB6AXuCm_nFM9xJ5JeWylTD5EQkU5qS3w4yubzihxaIbmir9TfGbv7hdYqkT8loOoAl20ZW3hMgJ1UXKafzt5ICvddDEulFo5RCGseV8tUJeSf8oaPC7RHH_QXJiXAND9JyDX4quUlbOZNjFQhNgcNxMpW-dY87q6HbvoeCxKumUI3jjQyKDLqy0lW2_qaC6OXrkwT7NmvJXwsK-ZwnXYcPvZv0FEvGuu3wiBROQ6Kren3-E2WjdDsacjUKr4Cl2LcRJnufZOCBt8U3pBIy3",
     },
@@ -15,6 +22,7 @@ export default function Projects() {
       description:
         "Visualizing national fiscal data through a custom-built API and real-time frontend dashboard.",
       tags: ["PostgreSQL", "React", "D3.js"],
+      category: "data-engineering" as const,
       image:
         "https://lh3.googleusercontent.com/aida-public/AB6AXuB_uyFtR5AuZqGLw8550oEYLxTQNfzEArKntmIkCzZ4dqqzUfTbnxXFdeSJxr4tpc_NzlDJHRmPlDmeFP_5ht0_HaX1r4H2rKc3j7IxS8QOvZ2JoyCanyEIkmpMCqVj4uIvu1Nu6KwxDTjq6p8073foUm0KaSxGZYyY-esV5XsC0e_VkjpqUgA6dBBIE9jpP2qY8W7nLIX0l6-Gte34qCY10hfJM_WIW6tBzsRyywy-StP9sXkoyGdA6wbQJ6S6qU_iaMp1npOS__yV",
     },
@@ -23,10 +31,21 @@ export default function Projects() {
       description:
         "Aggregating and analyzing commit patterns across large-scale open-source repositories.",
       tags: ["Go", "Redis", "Docker"],
+      category: "data-engineering" as const,
       image:
         "https://lh3.googleusercontent.com/aida-public/AB6AXuC7WNEMlueNi0zqmVNRQviAq3JyuiuLKn0IQcekJfQR_LL-usG6NtRpXxay6pBRC0iMQmVvdNGJQxg1PWQjagE8QorxKCVVSkidZJCjDNhzVDuLEBms4rD0e7d-eyXYswR8jmRCimM5tS5PEOEmAZSmaR0CPl7x4UibIEXOYhqZwkE8QYorI2cT05hhLtVC1U3-3An6Mb4PD0Ey_ilh2Fm49Z3LifjjqbXGQdE2HL5xICKM8ISUCgHt_JAJpD-EqcWYI9Bh2mVBrxL0",
     },
   ];
+
+  const filters: { id: FilterCategory; label: string }[] = [
+    { id: "all", label: "All" },
+    { id: "data-engineering", label: "Data Engineering" },
+  ];
+
+  const filteredProjects =
+    activeFilter === "all"
+      ? projectList
+      : projectList.filter((p) => p.category === activeFilter);
 
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="projects">
@@ -35,10 +54,28 @@ export default function Projects() {
         <p className="text-[#888888]">Engineered solutions for complex data environments.</p>
       </div>
 
+      <div className="flex gap-3 mb-8">
+        {filters.map((filter) => (
+          <button
+            key={filter.id}
+            type="button"
+            onClick={() => setActiveFilter(filter.id)}
+            className={`font-metric-lg text-xs px-4 py-2 border transition-all active:scale-95 ${
+              activeFilter === filter.id
+                ? "bg-[#00ff88] border-[#00ff88] text-[#0a0a0a]"
+                : "border-[#1f1f1f] text-[#888888] hover:border-[#00ff88] hover:text-[#00ff88]"
+            }`}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projectList.map((project, idx) => (
+        {filteredProjects.map((project, idx) => (
           <article
             key={idx}
+            data-cat={project.category}
             className="bg-[#111111] border border-[#1f1f1f] flex flex-col hover:border-[#00ff88] transition-colors duration-300 overflow-hidden"
           >
             <div className="h-48 bg-[#121414] overflow-hidden">

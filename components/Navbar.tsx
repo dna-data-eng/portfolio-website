@@ -8,8 +8,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "pipeline", "projects", "skills", "contact"];
-      // Offsets and heights tracking
+      const sections = ["about", "pipeline", "projects", "skills", "contact"];
       let current = "hero";
       const scrollPosition = window.scrollY + 160;
 
@@ -31,26 +30,27 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { id: "hero", label: "HERO" },
-    { id: "pipeline", label: "PIPELINE" },
-    { id: "projects", label: "PROJECTS" },
-    { id: "skills", label: "SKILLS" },
-    { id: "contact", label: "CONTACT" },
+    { id: "about", label: "About" },
+    { id: "pipeline", label: "Pipeline" },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "contact", label: "Contact" },
   ];
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#3b4b3d]">
       <nav className="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
-        <div className="flex items-center gap-2">
+        <a href="#hero" className="flex items-center gap-2">
           <span className="material-symbols-outlined text-[#00ff88]" data-icon="terminal">
             terminal
           </span>
-          <span className="font-metric-lg text-metric-lg font-bold text-[#00ff88] tracking-tighter">
-            DATA_ENGINEER
+          <span className="font-metric-lg text-metric-lg font-bold tracking-tighter">
+            <span className="text-[#00ff88]">D</span>
+            <span className="text-[#e3e2e2]">N</span>
+            <span className="text-[#00ff88]">A</span>
           </span>
-        </div>
+        </a>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => (
             <a
@@ -67,7 +67,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Mobile Navigation Button */}
         <button
           className="md:hidden text-[#00ff88] p-2 active:scale-95 transition-transform"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -76,7 +75,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#111111] border-b border-[#1f1f1f] flex flex-col py-4 px-gutter gap-4">
           {navLinks.map((link) => (

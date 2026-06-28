@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 const skillGroups = [
@@ -28,21 +26,6 @@ const skillGroups = [
 ];
 
 export default function About() {
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [photoSrc, setPhotoSrc] = useState("/profile.jpeg");
-
-  const handlePhotoClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setPhotoSrc(url);
-    }
-  };
-
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="about">
       <div>
@@ -53,31 +36,15 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           <div className="flex justify-center lg:justify-start">
-            <button
-              type="button"
-              onClick={handlePhotoClick}
-              className="relative w-64 h-64 border border-[#1f1f1f] overflow-hidden hover:border-[#00ff88] transition-colors group cursor-pointer"
-              title="Click to upload photo"
-            >
+            <div className="relative w-64 h-64 border border-[#1f1f1f] overflow-hidden">
               <Image
-                src={photoSrc}
+                src="/profile.jpeg"
                 alt="Dan Nyarkoh Andoh"
                 fill
                 className="object-cover"
                 sizes="256px"
-                unoptimized={photoSrc.startsWith("blob:")}
               />
-              <span className="absolute inset-0 bg-[#0a0a0a]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center font-code-md text-xs text-[#00ff88]">
-                Click to upload
-              </span>
-            </button>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handlePhotoChange}
-            />
+            </div>
           </div>
 
           <div>

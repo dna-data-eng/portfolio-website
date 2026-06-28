@@ -42,7 +42,7 @@ export default function Contact() {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
     );
-    window.location.href = `mailto:dannyarkoh7@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:ynyarkoh1@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (

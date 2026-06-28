@@ -38,11 +38,13 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const { name, email, message } = formData;
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
     const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+      `Name: ${name}\nEmail: ${email}\n\n${message}`
     );
     window.location.href = `mailto:ynyarkoh1@gmail.com?subject=${subject}&body=${body}`;
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (

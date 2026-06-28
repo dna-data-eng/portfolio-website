@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import SectionHeader from "./SectionHeader";
 
 const skillGroups = [
   {
@@ -7,17 +8,15 @@ const skillGroups = [
     tags: [
       "PostgreSQL",
       "Python",
-      "DDL/DML/DQL",
-      "JOINs",
-      "Window Functions",
       "pandas",
       "sqlalchemy",
       "Data Pipelines",
+      "Window Functions",
     ],
   },
   {
     label: "DevOps",
-    tags: ["Docker", "Linux Ubuntu 24.04", "Git & GitHub", "Bash Scripting"],
+    tags: ["Docker", "Ubuntu 24.04", "Git & GitHub", "Bash Scripting"],
   },
   {
     label: "Languages",
@@ -29,58 +28,56 @@ export default function About() {
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="about">
       <div>
-        <p className="font-label-sm text-label-sm text-[#00ff88] mb-2">About</p>
-        <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-12">$ whoami</h2>
+        <SectionHeader
+          eyebrow="About"
+          title="A bit about me"
+          description="Engineer first — I care about systems that are reliable, readable, and built to last."
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div className="flex justify-center lg:justify-start">
-            <div className="relative w-64 h-64 border border-[#1f1f1f] overflow-hidden">
+            <div className="relative w-72 h-72 rounded-xl overflow-hidden ring-1 ring-[var(--color-stroke-default)] shadow-[var(--shadow-elevated)]">
               <Image
                 src="/profile.jpeg"
                 alt="Dan Nyarkoh Andoh"
                 fill
                 className="object-cover"
-                sizes="256px"
+                sizes="288px"
+                priority
               />
             </div>
           </div>
 
           <div>
-            <div className="text-[#e3e2e2] text-base leading-7 space-y-4 mb-10">
+            <div className="text-[var(--color-fg-secondary)] text-base leading-relaxed space-y-4 mb-10">
               <p>
-                I&apos;m Dan Nyarkoh Andoh — a Data Engineer based in Accra, Ghana, building data
-                pipelines, engineering reliable infrastructure, and extracting insights from
-                complex datasets.
+                I&apos;m Dan Nyarkoh Andoh — a Data Engineer based in Accra, Ghana. I build data
+                pipelines, engineer reliable infrastructure, and extract insights from complex
+                datasets.
               </p>
               <p>
-                My core stack centers on PostgreSQL for structured data storage, Python (pandas,
-                sqlalchemy) for scripting and transformation, and Docker + Ubuntu 24.04 for clean,
-                reproducible deployments.
+                My core stack centers on PostgreSQL for structured storage, Python (pandas,
+                sqlalchemy) for transformation, and Docker on Ubuntu for reproducible deployments.
               </p>
               <p>
-                I leverage n8n and AI models like Google Gemini, Claude, and Ollama to automate
-                and enhance data workflows.
+                I also use n8n and AI tools like Gemini, Claude, and Ollama to automate and improve
+                data workflows — always with guardrails and observability in mind.
               </p>
               <p>
-                Currently targeting opportunities in Germany or Switzerland — learning Deutsch 🇩🇪
-                to build my career in Europe.
+                I&apos;m currently looking for opportunities in Germany or Switzerland, and
+                learning Deutsch 🇩🇪 to grow my career in Europe.
               </p>
             </div>
 
             <div className="space-y-6">
               {skillGroups.map((group) => (
                 <div key={group.label}>
-                  <h4 className="font-metric-lg text-[#00ff88] text-sm mb-3">{group.label}</h4>
+                  <h4 className="text-sm font-semibold text-[var(--color-fg-primary)] mb-3">
+                    {group.label}
+                  </h4>
                   <div className="flex flex-wrap gap-2">
-                    {group.tags.map((tag, idx) => (
-                      <span
-                        key={tag}
-                        className={`font-label-sm text-xs px-3 py-1 ${
-                          idx === 0
-                            ? "border border-[#00ff88] text-[#00ff88]"
-                            : "border border-[#1f1f1f] text-[#e3e2e2]"
-                        }`}
-                      >
+                    {group.tags.map((tag) => (
+                      <span key={tag} className="badge">
                         {tag}
                       </span>
                     ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import SectionHeader from "./SectionHeader";
 
 type FilterCategory = "all" | "data-engineering";
 
@@ -38,8 +39,8 @@ export default function Projects() {
   ];
 
   const filters: { id: FilterCategory; label: string }[] = [
-    { id: "all", label: "All" },
-    { id: "data-engineering", label: "Data Engineering" },
+    { id: "all", label: "All projects" },
+    { id: "data-engineering", label: "Data engineering" },
   ];
 
   const filteredProjects =
@@ -49,22 +50,19 @@ export default function Projects() {
 
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="projects">
-      <div className="mb-12">
-        <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-2">Projects</h2>
-        <p className="text-[#e3e2e2]">Engineered solutions for complex data environments.</p>
-      </div>
+      <SectionHeader
+        eyebrow="Work"
+        title="Selected projects"
+        description="Real systems I've built — focused on reliability, clarity, and measurable outcomes."
+      />
 
-      <div className="flex gap-3 mb-8">
+      <div className="flex flex-wrap gap-2 mb-8">
         {filters.map((filter) => (
           <button
             key={filter.id}
             type="button"
             onClick={() => setActiveFilter(filter.id)}
-            className={`font-metric-lg text-xs px-4 py-2 border transition-all active:scale-95 ${
-              activeFilter === filter.id
-                ? "bg-[#00ff88] border-[#00ff88] text-[#0a0a0a]"
-                : "border-[#1f1f1f] text-[#e3e2e2] hover:border-[#00ff88] hover:text-[#00ff88]"
-            }`}
+            className={`btn-subtle ${activeFilter === filter.id ? "is-active" : ""}`}
           >
             {filter.label}
           </button>
@@ -76,39 +74,34 @@ export default function Projects() {
           <article
             key={idx}
             data-cat={project.category}
-            className="bg-[#111111] border border-[#1f1f1f] flex flex-col hover:border-[#00ff88] transition-colors duration-300 overflow-hidden"
+            className="card-interactive flex flex-col overflow-hidden"
           >
-            <div className="h-48 bg-[#121414] overflow-hidden">
+            <div className="h-44 bg-[var(--color-canvas-subtle)] overflow-hidden">
               <div
-                className="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
+                className="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105"
                 style={{ backgroundImage: `url('${project.image}')` }}
-              ></div>
+              />
             </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="font-headline-lg text-xl text-[#e3e2e2] mb-3">{project.title}</h3>
-              <p className="text-[#e3e2e2] text-sm mb-6 flex-1 leading-relaxed">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag, tIdx) => (
-                  <span
-                    key={tIdx}
-                    className="bg-[#1f1f1f] text-[#e3e2e2] font-label-sm text-[10px] px-3 py-1 rounded-full uppercase tracking-widest"
-                  >
+            <div className="p-5 flex flex-col flex-1">
+              <h3 className="text-lg font-semibold text-[var(--color-fg-primary)] mb-2">
+                {project.title}
+              </h3>
+              <p className="text-sm text-[var(--color-fg-secondary)] mb-5 flex-1 leading-relaxed">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="badge">
                     {tag}
                   </span>
                 ))}
               </div>
-              <div className="flex gap-4 border-t border-[#3b4b3d] pt-6">
-                <a
-                  className="flex-1 bg-[#00ff88] text-[#003919] text-center py-2 font-metric-lg text-xs hover:opacity-90 active:scale-95 transition-all"
-                  href="#"
-                >
-                  VIEW LIVE
+              <div className="flex gap-2 pt-4 border-t border-[var(--color-stroke-subtle)]">
+                <a className="btn-primary flex-1 text-xs py-2" href="#">
+                  View live
                 </a>
-                <a
-                  className="flex-1 border border-[#3b4b3d] text-[#e3e2e2] text-center py-2 font-metric-lg text-xs hover:border-[#00ff88] hover:text-[#00ff88] active:scale-95 transition-all"
-                  href="#"
-                >
-                  GITHUB
+                <a className="btn-secondary flex-1 text-xs py-2" href="#">
+                  GitHub
                 </a>
               </div>
             </div>

@@ -1,132 +1,102 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import SectionHeader from "./SectionHeader";
 
 export default function Skills() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    // Delay slightly to trigger transition after render
     const timer = setTimeout(() => setAnimate(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
+  const skillCategories = [
+    {
+      title: "Core engineering",
+      items: [
+        { name: "Python", detail: "ETL, automation & data quality" },
+        { name: "SQL / PostgreSQL", detail: "Modeling, optimization & analytics" },
+        { name: "Docker & Linux", detail: "Reproducible deployments" },
+      ],
+    },
+    {
+      title: "Data platform",
+      items: [
+        { name: "Supabase", detail: "PostgreSQL & real-time APIs" },
+        { name: "pandas & sqlalchemy", detail: "Transformation pipelines" },
+        { name: "n8n", detail: "Workflow automation" },
+      ],
+    },
+    {
+      title: "Frontend & delivery",
+      items: [
+        { name: "Next.js & React", detail: "Dashboards & internal tools" },
+        { name: "Recharts", detail: "Live data visualization" },
+        { name: "Git & CI practices", detail: "Reviewable, shippable code" },
+      ],
+    },
+  ];
+
   const competencies = [
     { name: "Python", value: 95 },
-    { name: "SQL", value: 90 },
-    { name: "Apache Airflow", value: 85 },
-    { name: "AWS Infrastructure", value: 80 },
+    { name: "SQL & PostgreSQL", value: 92 },
+    { name: "Pipeline design", value: 88 },
+    { name: "Cloud & DevOps", value: 82 },
   ];
 
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="skills">
-      <div className="flex flex-col lg:flex-row gap-16">
-        {/* Left Grid */}
-        <div className="flex-1">
-          <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-8">
-            Technical Proficiency
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
-            <div>
-              <h4 className="font-metric-lg text-[#00ff88] text-sm mb-4 border-b border-[#3b4b3d] pb-2 uppercase">
-                Languages
-              </h4>
-              <ul className="space-y-3">
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Python</span>
-                  <span className="text-xs text-[#c8c8c8]">ETL & Automation</span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">SQL</span>
-                  <span className="text-xs text-[#c8c8c8]">Advanced Modeling</span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Go</span>
-                  <span className="text-xs text-[#c8c8c8]">Performance Tooling</span>
-                </li>
-              </ul>
-            </div>
+      <SectionHeader
+        eyebrow="Skills"
+        title="What I bring to a team"
+        description="Depth in data engineering, with the pragmatism to ship and maintain production systems."
+        className="mb-10"
+      />
 
-            <div>
-              <h4 className="font-metric-lg text-[#00ff88] text-sm mb-4 border-b border-[#3b4b3d] pb-2 uppercase">
-                Data Tools
+      <div className="flex flex-col lg:flex-row gap-10">
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
+          {skillCategories.map((category) => (
+            <div key={category.title} className="card p-5">
+              <h4 className="text-sm font-semibold text-[var(--color-fg-primary)] mb-4 pb-3 border-b border-[var(--color-stroke-subtle)]">
+                {category.title}
               </h4>
-              <ul className="space-y-3">
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Apache Spark</span>
-                  <span className="text-xs text-[#c8c8c8]">Big Data Compute</span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Airflow</span>
-                  <span className="text-xs text-[#c8c8c8]">Orchestration</span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">dbt</span>
-                  <span className="text-xs text-[#c8c8c8]">Transformation Layer</span>
-                </li>
+              <ul className="space-y-4">
+                {category.items.map((item) => (
+                  <li key={item.name}>
+                    <span className="block text-sm font-medium text-[var(--color-fg-primary)]">
+                      {item.name}
+                    </span>
+                    <span className="block text-xs text-[var(--color-fg-muted)] mt-0.5">
+                      {item.detail}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
-
-            <div>
-              <h4 className="font-metric-lg text-[#00ff88] text-sm mb-4 border-b border-[#3b4b3d] pb-2 uppercase">
-                Infrastructure
-              </h4>
-              <ul className="space-y-3">
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">AWS</span>
-                  <span className="text-xs text-[#c8c8c8]">S3, Lambda, Glue</span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Terraform</span>
-                  <span className="text-xs text-[#c8c8c8]">IaC Pipelines</span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Docker</span>
-                  <span className="text-xs text-[#c8c8c8]">Containerization</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-metric-lg text-[#00ff88] text-sm mb-4 border-b border-[#3b4b3d] pb-2 uppercase">
-                Frontend
-              </h4>
-              <ul className="space-y-3">
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Tailwind CSS</span>
-                  <span className="text-xs text-[#c8c8c8]">Modern UI</span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Next.js</span>
-                  <span className="text-xs text-[#c8c8c8]">Dashboard Framework</span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[#e3e2e2]">Supabase</span>
-                  <span className="text-xs text-[#c8c8c8]">Real-time Backend</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Right Card (Competency Matrix) */}
-        <div className="flex-1 flex flex-col justify-center">
-          <div className="bg-[#111111] border border-[#1f1f1f] p-8 hover:border-[#00ff88] transition-colors duration-300">
-            <h4 className="font-metric-lg text-[#e3e2e2] text-xs mb-8 uppercase tracking-[0.2em]">
-              Competency Matrix
+        <div className="flex-1 lg:max-w-md">
+          <div className="card p-6 h-full">
+            <h4 className="text-sm font-semibold text-[var(--color-fg-primary)] mb-6">
+              Strength overview
             </h4>
-            <div className="space-y-6">
-              {competencies.map((comp, idx) => (
-                <div key={idx} className="space-y-2">
-                  <div className="flex justify-between font-label-sm text-[#e3e2e2]">
-                    <span>{comp.name}</span>
-                    <span>{comp.value}%</span>
+            <div className="space-y-5">
+              {competencies.map((comp) => (
+                <div key={comp.name} className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-[var(--color-fg-secondary)]">{comp.name}</span>
+                    <span className="text-[var(--color-fg-muted)] font-medium">{comp.value}%</span>
                   </div>
-                  <div className="w-full bg-[#1f1f1f] h-1.5 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 rounded-full bg-[var(--color-canvas-subtle)] overflow-hidden">
                     <div
-                      className="bg-[#00ff88] h-full transition-all duration-1000 ease-out"
-                      style={{ width: animate ? `${comp.value}%` : "0%" }}
-                    ></div>
+                      className="h-full rounded-full transition-all duration-1000 ease-out"
+                      style={{
+                        width: animate ? `${comp.value}%` : "0%",
+                        background: "var(--color-brand)",
+                      }}
+                    />
                   </div>
                 </div>
               ))}

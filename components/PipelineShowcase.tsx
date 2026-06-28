@@ -11,6 +11,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
+import SectionHeader from "./SectionHeader";
 
 const dummyData = [
   { time: "00:00", temp: 26.5 },
@@ -20,6 +21,37 @@ const dummyData = [
   { time: "16:00", temp: 29.5 },
   { time: "20:00", temp: 27.2 },
   { time: "NOW", temp: 28.4 },
+];
+
+const pipelineSteps = [
+  {
+    icon: "api",
+    title: "API source",
+    description: "Ingesting weather data for Accra via OpenWeatherMap REST endpoints.",
+    live: false,
+  },
+  {
+    icon: "input",
+    title: "Ingest",
+    description: "Scheduled ingestion with validation before downstream processing.",
+    live: true,
+  },
+  {
+    icon: "transform",
+    title: "Transform",
+    description: "Schema normalization and quality checks in Python.",
+  },
+  {
+    icon: "database",
+    title: "Supabase",
+    description: "Persistent storage on PostgreSQL with typed access patterns.",
+  },
+  {
+    icon: "monitoring",
+    title: "Dashboard",
+    description: "Live telemetry and trend visualization on this site.",
+    final: true,
+  },
 ];
 
 export default function PipelineShowcase() {
@@ -68,113 +100,50 @@ export default function PipelineShowcase() {
 
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="pipeline">
-      <div className="mb-12">
-        <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-2">Live Data Pipeline</h2>
-        <p className="text-[#e3e2e2]">End-to-end — from raw API to visual insight</p>
-      </div>
+      <SectionHeader
+        eyebrow="Pipeline"
+        title="Live data pipeline"
+        description="From external API to stored records to the chart below — running on real data from Accra."
+      />
 
-      <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-stretch">
-        {/* Vertical Flow */}
-        <div className="flex-1 w-full space-y-4">
-          {/* Step 1 */}
-          <div className="flex items-start gap-4">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-[#1f2020] border border-[#1f1f1f] flex items-center justify-center text-[#00ff88]">
-                <span className="material-symbols-outlined" data-icon="api">
-                  api
-                </span>
+      <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+        <div className="flex-1 w-full space-y-3">
+          {pipelineSteps.map((step, index) => (
+            <div key={step.title} className="flex items-start gap-4">
+              <div className="flex flex-col items-center">
+                <div
+                  className={`w-11 h-11 rounded-lg flex items-center justify-center ${
+                    step.final
+                      ? "bg-[var(--color-brand)] text-[var(--color-brand-on)]"
+                      : "bg-[var(--color-surface)] border border-[var(--color-stroke-subtle)] text-[var(--color-brand)]"
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-xl">{step.icon}</span>
+                </div>
+                {index < pipelineSteps.length - 1 && (
+                  <div className="w-px h-10 bg-[var(--color-stroke-default)] my-1" />
+                )}
               </div>
-              <div className="w-px h-12 bg-[#3b4b3d]"></div>
-            </div>
-            <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
-              <h4 className="font-metric-lg text-sm mb-1 uppercase">API Source</h4>
-              <p className="text-[#e3e2e2] text-sm">
-                Ingesting weather & traffic data via REST endpoints.
-              </p>
-            </div>
-          </div>
-
-          {/* Step 2 */}
-          <div className="flex items-start gap-4">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-[#1f2020] border border-[#1f1f1f] flex items-center justify-center text-[#00ff88] relative">
-                <span className="material-symbols-outlined" data-icon="input">
-                  input
-                </span>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#00ff88] rounded-full animate-ping"></div>
-              </div>
-              <div className="w-px h-12 bg-[#3b4b3d]"></div>
-            </div>
-            <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
-              <h4 className="font-metric-lg text-sm mb-1 uppercase">
-                Ingest <span className="text-xs text-[#00ff88] ml-2 tracking-tighter">LIVE</span>
-              </h4>
-              <p className="text-[#e3e2e2] text-sm">
-                Asynchronous queue processing with Python and Redis.
-              </p>
-            </div>
-          </div>
-
-          {/* Step 3 */}
-          <div className="flex items-start gap-4">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-[#1f2020] border border-[#1f1f1f] flex items-center justify-center text-[#00ff88]">
-                <span className="material-symbols-outlined" data-icon="transform">
-                  transform
-                </span>
-              </div>
-              <div className="w-px h-12 bg-[#3b4b3d]"></div>
-            </div>
-            <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
-              <h4 className="font-metric-lg text-sm mb-1 uppercase">Transform</h4>
-              <p className="text-[#e3e2e2] text-sm font-body-md">
-                Schema validation and normalization using dbt models.
-              </p>
-            </div>
-          </div>
-
-          {/* Step 4 */}
-          <div className="flex items-start gap-4">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-[#1f2020] border border-[#1f1f1f] flex items-center justify-center text-[#00ff88]">
-                <span className="material-symbols-outlined" data-icon="database">
-                  database
-                </span>
-              </div>
-              <div className="w-px h-12 bg-[#3b4b3d]"></div>
-            </div>
-            <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
-              <h4 className="font-metric-lg text-sm mb-1 uppercase">Supabase</h4>
-              <p className="text-[#e3e2e2] text-sm">
-                High-performance storage on PostgreSQL backend.
-              </p>
-            </div>
-          </div>
-
-          {/* Step 5 */}
-          <div className="flex items-start gap-4">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-[#00ff88] flex items-center justify-center text-[#0a0a0a]">
-                <span className="material-symbols-outlined" data-icon="monitoring">
-                  monitoring
-                </span>
+              <div className="card-interactive p-4 flex-1">
+                <h4 className="text-sm font-semibold text-[var(--color-fg-primary)] mb-1 flex items-center gap-2">
+                  {step.title}
+                  {step.live && <span className="badge badge-brand text-[10px] py-0.5">Live</span>}
+                </h4>
+                <p className="text-sm text-[var(--color-fg-secondary)]">{step.description}</p>
               </div>
             </div>
-            <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
-              <h4 className="font-metric-lg text-sm mb-1 uppercase">Dashboard</h4>
-              <p className="text-[#e3e2e2] text-sm">Real-time telemetry and KPI visualization.</p>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Dashboard Widget */}
-        <div className="flex-1 w-full bg-[#1f2020] border border-[#1f1f1f] p-8 flex flex-col hover:border-[#00ff88] transition-colors duration-300">
-          <div className="flex justify-between items-center mb-8">
+        <div className="flex-1 w-full card p-6 flex flex-col">
+          <div className="flex justify-between items-start mb-6">
             <div>
-              <h3 className="font-metric-lg text-[#e3e2e2]">Live Temperature Data</h3>
-              <p className="font-code-md text-[#e3e2e2]">Accra - Last 24hrs</p>
+              <h3 className="text-base font-semibold text-[var(--color-fg-primary)]">
+                Temperature trend
+              </h3>
+              <p className="text-sm text-[var(--color-fg-muted)] mt-1">Accra · last 24 hours</p>
             </div>
-            <span className="material-symbols-outlined text-[#00ff88]">settings</span>
+            <span className="material-symbols-outlined text-[var(--color-brand)]">insights</span>
           </div>
 
           <div className="flex-1 flex flex-col justify-center min-h-[220px]">
@@ -182,17 +151,17 @@ export default function PipelineShowcase() {
               <div className="w-full h-full min-h-[200px]">
                 <ResponsiveContainer width="100%" height={200}>
                   <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="4" stroke="#1f1f1f" vertical={false} />
+                    <CartesianGrid strokeDasharray="4" stroke="rgba(255,255,255,0.06)" vertical={false} />
                     <XAxis
                       dataKey="time"
-                      stroke="#888888"
-                      fontSize={10}
+                      stroke="#adadad"
+                      fontSize={11}
                       tickLine={false}
                       axisLine={false}
                     />
                     <YAxis
-                      stroke="#888888"
-                      fontSize={10}
+                      stroke="#adadad"
+                      fontSize={11}
                       tickLine={false}
                       axisLine={false}
                       domain={["auto", "auto"]}
@@ -200,11 +169,11 @@ export default function PipelineShowcase() {
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: "#111111",
-                        borderColor: "#1f1f1f",
-                        borderRadius: "0.25rem",
+                        backgroundColor: "#1f1f1f",
+                        borderColor: "rgba(255,255,255,0.12)",
+                        borderRadius: "8px",
                       }}
-                      labelStyle={{ color: "#888888", fontSize: "12px" }}
+                      labelStyle={{ color: "#adadad", fontSize: "12px" }}
                       itemStyle={{ color: "#00ff88", fontSize: "12px" }}
                       formatter={(value: any) => [`${value}°C`, "Temperature"]}
                     />
@@ -212,46 +181,35 @@ export default function PipelineShowcase() {
                       type="monotone"
                       dataKey="temp"
                       stroke="#00ff88"
-                      strokeWidth={3}
+                      strokeWidth={2.5}
                       dot={false}
-                      activeDot={{ r: 6, fill: "#00ff88" }}
+                      activeDot={{ r: 5, fill: "#00ff88" }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
             ) : (
               <div className="w-full h-auto animate-pulse flex flex-col justify-center items-center py-10">
-                <svg className="w-full h-auto" viewBox="0 0 500 200">
+                <svg className="w-full h-auto" viewBox="0 0 500 200" aria-hidden="true">
                   <path
                     d="M0 160 C 50 150, 100 170, 150 140 S 250 100, 300 120 S 400 80, 500 90"
                     fill="none"
-                    stroke="#1f1f1f"
+                    stroke="rgba(255,255,255,0.08)"
                     strokeWidth="3"
-                  ></path>
+                  />
                 </svg>
               </div>
             )}
-            <div className="flex justify-between mt-4 font-label-sm text-[#e3e2e2]">
-              <span>00:00</span>
-              <span>06:00</span>
-              <span>12:00</span>
-              <span>18:00</span>
-              <span>NOW</span>
-            </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            <div className="p-4 bg-[#0a0a0a]/50 border border-[#3b4b3d]">
-              <span className="block text-xs uppercase tracking-widest text-[#e3e2e2] mb-1">
-                Average
-              </span>
-              <span className="font-metric-lg text-xl text-[#e3e2e2]">{avgTemp}°C</span>
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="rounded-lg p-4 bg-[var(--color-canvas-subtle)] border border-[var(--color-stroke-subtle)]">
+              <span className="block text-xs text-[var(--color-fg-muted)] mb-1">Average</span>
+              <span className="text-xl font-semibold text-[var(--color-fg-primary)]">{avgTemp}°C</span>
             </div>
-            <div className="p-4 bg-[#0a0a0a]/50 border border-[#3b4b3d]">
-              <span className="block text-xs uppercase tracking-widest text-[#e3e2e2] mb-1">
-                Uptime
-              </span>
-              <span className="font-metric-lg text-xl text-[#00ff88]">99.9%</span>
+            <div className="rounded-lg p-4 bg-[var(--color-canvas-subtle)] border border-[var(--color-stroke-subtle)]">
+              <span className="block text-xs text-[var(--color-fg-muted)] mb-1">Uptime</span>
+              <span className="text-xl font-semibold text-[var(--color-brand)]">99.9%</span>
             </div>
           </div>
         </div>

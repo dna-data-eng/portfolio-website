@@ -14,11 +14,8 @@ export default function Navbar() {
 
       for (const section of sections) {
         const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
-            current = section;
-          }
+        if (el && scrollPosition >= el.offsetTop) {
+          current = section;
         }
       }
       setActiveSection(current);
@@ -38,27 +35,25 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#3b4b3d]">
-      <nav className="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
-        <a href="#hero" className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-[#00ff88]" data-icon="terminal">
-            terminal
-          </span>
-          <span className="font-metric-lg text-metric-lg font-bold tracking-tighter">
-            <span className="text-[#00ff88]">D</span>
-            <span className="text-[#e3e2e2]">N</span>
-            <span className="text-[#00ff88]">A</span>
+    <header className="nav-shell fixed top-0 w-full z-50">
+      <nav className="flex justify-between items-center px-gutter py-3.5 max-w-container-max mx-auto">
+        <a href="#hero" className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 rounded-md bg-[var(--color-brand-subtle)] flex items-center justify-center">
+            <span className="text-sm font-semibold text-[var(--color-brand)]">D</span>
+          </div>
+          <span className="text-sm font-semibold text-[var(--color-fg-primary)] group-hover:text-[var(--color-brand-hover)] transition-colors">
+            Dan Andoh
           </span>
         </a>
 
-        <div className="hidden md:flex gap-8 items-center">
+        <div className="hidden md:flex gap-1 items-center">
           {navLinks.map((link) => (
             <a
               key={link.id}
-              className={`transition-colors font-label-sm text-label-sm ${
+              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                 activeSection === link.id
-                  ? "text-[#00ff88] border-b-2 border-[#00ff88] pb-1"
-                  : "text-[#c8c8c8] hover:text-[#00ff88]"
+                  ? "text-[var(--color-brand)] bg-[var(--color-brand-subtle)]"
+                  : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg-primary)] hover:bg-[var(--color-surface)]"
               }`}
               href={`#${link.id}`}
             >
@@ -68,20 +63,23 @@ export default function Navbar() {
         </div>
 
         <button
-          className="md:hidden text-[#00ff88] p-2 active:scale-95 transition-transform"
+          className="md:hidden p-2 rounded-md text-[var(--color-fg-primary)] hover:bg-[var(--color-surface)] transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
           <span className="material-symbols-outlined">{mobileMenuOpen ? "close" : "menu"}</span>
         </button>
       </nav>
 
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#111111] border-b border-[#1f1f1f] flex flex-col py-4 px-gutter gap-4">
+        <div className="md:hidden border-t border-[var(--color-stroke-subtle)] bg-[var(--color-canvas-subtle)] flex flex-col py-2 px-gutter gap-1">
           {navLinks.map((link) => (
             <a
               key={link.id}
-              className={`font-label-sm text-label-sm py-2 block ${
-                activeSection === link.id ? "text-[#00ff88]" : "text-[#c8c8c8]"
+              className={`text-sm font-medium py-2.5 px-3 rounded-md ${
+                activeSection === link.id
+                  ? "text-[var(--color-brand)] bg-[var(--color-brand-subtle)]"
+                  : "text-[var(--color-fg-muted)]"
               }`}
               href={`#${link.id}`}
               onClick={() => setMobileMenuOpen(false)}

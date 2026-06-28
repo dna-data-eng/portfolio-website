@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -26,38 +26,19 @@ export default function Home() {
     setModalOpen(false);
   };
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("translate-y-0");
-          entry.target.classList.remove("translate-y-6");
-        }
-      });
-    }, observerOptions);
-
-    const divs = document.querySelectorAll("section > div");
-    divs.forEach((el) => {
-      el.classList.add("transition-all", "duration-700", "translate-y-6");
-      observer.observe(el);
-    });
-
-    return () => {
-      divs.forEach((el) => {
-        observer.unobserve(el);
-      });
-    };
-  }, []);
+  const footerLinks = [
+    { href: "#about", label: "About" },
+    { href: "#pipeline", label: "Pipeline" },
+    { href: "#projects", label: "Projects" },
+    { href: "#skills", label: "Skills" },
+    { href: "#contact", label: "Contact" },
+  ];
 
   return (
     <>
       <DotGrid />
       <Navbar />
-      <main className="relative z-10 pt-24">
+      <main className="relative z-10 pt-20">
         <Hero onOpenModal={openModal} />
         <About />
         <PipelineShowcase />
@@ -66,27 +47,21 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="w-full py-section-gap bg-[#0a0a0a] border-t border-[#1f1f1f]">
-        <div className="flex flex-col items-center gap-4 w-full px-gutter max-w-container-max mx-auto">
-          <div className="flex gap-8 flex-wrap justify-center">
-            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#about">
-              About
-            </a>
-            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#pipeline">
-              Pipeline
-            </a>
-            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#projects">
-              Projects
-            </a>
-            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#skills">
-              Skills
-            </a>
-            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#contact">
-              Contact
-            </a>
-          </div>
-          <p className="text-[#e3e2e2] font-code-md text-label-sm">
-            {"// DNA — Dan Nyarkoh Andoh · Data Engineer — Accra, Ghana 🇬🇭"}
+      <footer className="w-full py-12 border-t border-[var(--color-stroke-subtle)] bg-[var(--color-canvas-subtle)]">
+        <div className="flex flex-col items-center gap-5 w-full px-gutter max-w-container-max mx-auto">
+          <nav className="flex gap-6 flex-wrap justify-center" aria-label="Footer">
+            {footerLinks.map((link) => (
+              <a
+                key={link.href}
+                className="text-sm text-[var(--color-fg-muted)] hover:text-[var(--color-brand)] transition-colors"
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <p className="text-sm text-[var(--color-fg-secondary)] text-center">
+            Dan Nyarkoh Andoh · Data Engineer · Accra, Ghana 🇬🇭
           </p>
         </div>
       </footer>

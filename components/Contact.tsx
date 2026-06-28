@@ -49,7 +49,7 @@ export default function Contact() {
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="contact">
       <div className="mb-12">
         <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-2">Contact</h2>
-        <p className="text-[#888888]">Let&apos;s connect and build something together.</p>
+        <p className="text-[#e3e2e2]">Let&apos;s connect and build something together.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -65,7 +65,7 @@ export default function Contact() {
                 {displayText}
                 <span className="animate-pulse">▊</span>
               </p>
-              <div className="text-[#888888] text-xs space-y-2 pt-4 border-t border-[#1f1f1f]">
+              <div className="text-[#e3e2e2] text-sm space-y-2 pt-4 border-t border-[#1f1f1f]">
                 <p>
                   STATUS: <span className="text-[#00ff88]">OPEN TO OPPORTUNITIES</span>
                 </p>
@@ -102,7 +102,7 @@ export default function Contact() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block font-label-sm text-label-sm text-[#888888] mb-2 uppercase tracking-wider">
+            <label htmlFor="name" className="block font-label-sm text-label-sm text-[#e3e2e2] mb-2">
               Name
             </label>
             <input
@@ -115,7 +115,7 @@ export default function Contact() {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block font-label-sm text-label-sm text-[#888888] mb-2 uppercase tracking-wider">
+            <label htmlFor="email" className="block font-label-sm text-label-sm text-[#e3e2e2] mb-2">
               Email
             </label>
             <input
@@ -128,7 +128,7 @@ export default function Contact() {
             />
           </div>
           <div>
-            <label htmlFor="message" className="block font-label-sm text-label-sm text-[#888888] mb-2 uppercase tracking-wider">
+            <label htmlFor="message" className="block font-label-sm text-label-sm text-[#e3e2e2] mb-2">
               Message
             </label>
             <textarea

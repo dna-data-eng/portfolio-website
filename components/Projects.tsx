@@ -51,7 +51,7 @@ export default function Projects() {
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="projects">
       <div className="mb-12">
         <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-2">Projects</h2>
-        <p className="text-[#888888]">Engineered solutions for complex data environments.</p>
+        <p className="text-[#e3e2e2]">Engineered solutions for complex data environments.</p>
       </div>
 
       <div className="flex gap-3 mb-8">
@@ -63,7 +63,7 @@ export default function Projects() {
             className={`font-metric-lg text-xs px-4 py-2 border transition-all active:scale-95 ${
               activeFilter === filter.id
                 ? "bg-[#00ff88] border-[#00ff88] text-[#0a0a0a]"
-                : "border-[#1f1f1f] text-[#888888] hover:border-[#00ff88] hover:text-[#00ff88]"
+                : "border-[#1f1f1f] text-[#e3e2e2] hover:border-[#00ff88] hover:text-[#00ff88]"
             }`}
           >
             {filter.label}
@@ -86,12 +86,12 @@ export default function Projects() {
             </div>
             <div className="p-6 flex flex-col flex-1">
               <h3 className="font-headline-lg text-xl text-[#e3e2e2] mb-3">{project.title}</h3>
-              <p className="text-[#888888] text-sm mb-6 flex-1">{project.description}</p>
+              <p className="text-[#e3e2e2] text-sm mb-6 flex-1 leading-relaxed">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag, tIdx) => (
                   <span
                     key={tIdx}
-                    className="bg-[#1f1f1f] text-[#888888] font-label-sm text-[10px] px-3 py-1 rounded-full uppercase tracking-widest"
+                    className="bg-[#1f1f1f] text-[#e3e2e2] font-label-sm text-[10px] px-3 py-1 rounded-full uppercase tracking-widest"
                   >
                     {tag}
                   </span>
@@ -105,7 +105,7 @@ export default function Projects() {
                   VIEW LIVE
                 </a>
                 <a
-                  className="flex-1 border border-[#3b4b3d] text-[#888888] text-center py-2 font-metric-lg text-xs hover:border-[#00ff88] hover:text-[#00ff88] active:scale-95 transition-all"
+                  className="flex-1 border border-[#3b4b3d] text-[#e3e2e2] text-center py-2 font-metric-lg text-xs hover:border-[#00ff88] hover:text-[#00ff88] active:scale-95 transition-all"
                   href="#"
                 >
                   GITHUB

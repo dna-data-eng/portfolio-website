@@ -66,10 +66,10 @@ export default function Hero({ onOpenModal }: HeroProps) {
           <span className="text-[#e3e2e2]">N</span>
           <span className="text-[#00ff88]">A</span>
         </h1>
-        <p className="font-metric-lg text-metric-lg text-[#888888] mb-6">
+        <p className="font-metric-lg text-metric-lg text-[#e3e2e2] mb-6">
           Dan Nyarkoh Andoh · Data Engineer / Accra, Ghana 🇬🇭
         </p>
-        <p className="text-xl text-[#888888] mb-10 max-w-xl leading-relaxed">
+        <p className="text-xl text-[#e3e2e2] mb-10 max-w-xl leading-relaxed">
           Building data pipelines, engineering reliable infrastructure, and delivering insights at
           scale.
         </p>
@@ -97,7 +97,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
           </div>
         </div>
 
-        <div className="border-t border-[#1f1f1f] pt-4 mb-16 flex flex-wrap items-center gap-x-4 gap-y-2 font-code-md text-[10px] text-[#888888] uppercase tracking-wider">
+        <div className="border-t border-[#1f1f1f] pt-4 mb-16 flex flex-wrap items-center gap-x-4 gap-y-2 font-code-md text-xs text-[#c8c8c8]">
           {metaItems.map((item, idx) => (
             <React.Fragment key={item.label}>
               {idx > 0 && <span className="text-[#1f1f1f] hidden sm:inline">|</span>}
@@ -128,7 +128,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
                 <div className="pulse-ring"></div>
                 <div className="w-2 h-2 bg-[#00ff88] rounded-full relative z-10"></div>
               </div>
-              <span className="font-label-sm text-label-sm text-[#888888] tracking-widest uppercase">
+              <span className="font-label-sm text-label-sm text-[#e3e2e2]">
                 System Status: Active
               </span>
             </div>
@@ -138,7 +138,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
             <span className="font-metric-lg text-3xl text-[#e3e2e2] block mb-1">
               {ingestedCount === null ? "..." : ingestedCount.toLocaleString()}
             </span>
-            <span className="font-code-md text-code-md text-[#888888]">Records ingested today</span>
+            <span className="font-code-md text-code-md text-[#e3e2e2]">Records ingested today</span>
           </div>
           <div className="h-16 w-full">
             <svg className="w-full h-full" viewBox="0 0 400 100">

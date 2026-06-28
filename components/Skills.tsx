@@ -34,15 +34,15 @@ export default function Skills() {
               <ul className="space-y-3">
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Python</span>
-                  <span className="text-xs text-[#888888]">ETL & Automation</span>
+                  <span className="text-xs text-[#c8c8c8]">ETL & Automation</span>
                 </li>
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">SQL</span>
-                  <span className="text-xs text-[#888888]">Advanced Modeling</span>
+                  <span className="text-xs text-[#c8c8c8]">Advanced Modeling</span>
                 </li>
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Go</span>
-                  <span className="text-xs text-[#888888]">Performance Tooling</span>
+                  <span className="text-xs text-[#c8c8c8]">Performance Tooling</span>
                 </li>
               </ul>
             </div>
@@ -54,15 +54,15 @@ export default function Skills() {
               <ul className="space-y-3">
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Apache Spark</span>
-                  <span className="text-xs text-[#888888]">Big Data Compute</span>
+                  <span className="text-xs text-[#c8c8c8]">Big Data Compute</span>
                 </li>
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Airflow</span>
-                  <span className="text-xs text-[#888888]">Orchestration</span>
+                  <span className="text-xs text-[#c8c8c8]">Orchestration</span>
                 </li>
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">dbt</span>
-                  <span className="text-xs text-[#888888]">Transformation Layer</span>
+                  <span className="text-xs text-[#c8c8c8]">Transformation Layer</span>
                 </li>
               </ul>
             </div>
@@ -74,15 +74,15 @@ export default function Skills() {
               <ul className="space-y-3">
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">AWS</span>
-                  <span className="text-xs text-[#888888]">S3, Lambda, Glue</span>
+                  <span className="text-xs text-[#c8c8c8]">S3, Lambda, Glue</span>
                 </li>
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Terraform</span>
-                  <span className="text-xs text-[#888888]">IaC Pipelines</span>
+                  <span className="text-xs text-[#c8c8c8]">IaC Pipelines</span>
                 </li>
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Docker</span>
-                  <span className="text-xs text-[#888888]">Containerization</span>
+                  <span className="text-xs text-[#c8c8c8]">Containerization</span>
                 </li>
               </ul>
             </div>
@@ -94,15 +94,15 @@ export default function Skills() {
               <ul className="space-y-3">
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Tailwind CSS</span>
-                  <span className="text-xs text-[#888888]">Modern UI</span>
+                  <span className="text-xs text-[#c8c8c8]">Modern UI</span>
                 </li>
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Next.js</span>
-                  <span className="text-xs text-[#888888]">Dashboard Framework</span>
+                  <span className="text-xs text-[#c8c8c8]">Dashboard Framework</span>
                 </li>
                 <li className="flex flex-col">
                   <span className="text-[#e3e2e2]">Supabase</span>
-                  <span className="text-xs text-[#888888]">Real-time Backend</span>
+                  <span className="text-xs text-[#c8c8c8]">Real-time Backend</span>
                 </li>
               </ul>
             </div>
@@ -112,13 +112,13 @@ export default function Skills() {
         {/* Right Card (Competency Matrix) */}
         <div className="flex-1 flex flex-col justify-center">
           <div className="bg-[#111111] border border-[#1f1f1f] p-8 hover:border-[#00ff88] transition-colors duration-300">
-            <h4 className="font-metric-lg text-[#888888] text-xs mb-8 uppercase tracking-[0.2em]">
+            <h4 className="font-metric-lg text-[#e3e2e2] text-xs mb-8 uppercase tracking-[0.2em]">
               Competency Matrix
             </h4>
             <div className="space-y-6">
               {competencies.map((comp, idx) => (
                 <div key={idx} className="space-y-2">
-                  <div className="flex justify-between font-label-sm text-[#888888]">
+                  <div className="flex justify-between font-label-sm text-[#e3e2e2]">
                     <span>{comp.name}</span>
                     <span>{comp.value}%</span>
                   </div>

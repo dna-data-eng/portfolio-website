@@ -70,7 +70,7 @@ export default function PipelineShowcase() {
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="pipeline">
       <div className="mb-12">
         <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-2">Live Data Pipeline</h2>
-        <p className="text-[#888888]">End-to-end — from raw API to visual insight</p>
+        <p className="text-[#e3e2e2]">End-to-end — from raw API to visual insight</p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-stretch">
@@ -88,7 +88,7 @@ export default function PipelineShowcase() {
             </div>
             <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
               <h4 className="font-metric-lg text-sm mb-1 uppercase">API Source</h4>
-              <p className="text-[#888888] text-sm">
+              <p className="text-[#e3e2e2] text-sm">
                 Ingesting weather & traffic data via REST endpoints.
               </p>
             </div>
@@ -109,7 +109,7 @@ export default function PipelineShowcase() {
               <h4 className="font-metric-lg text-sm mb-1 uppercase">
                 Ingest <span className="text-xs text-[#00ff88] ml-2 tracking-tighter">LIVE</span>
               </h4>
-              <p className="text-[#888888] text-sm">
+              <p className="text-[#e3e2e2] text-sm">
                 Asynchronous queue processing with Python and Redis.
               </p>
             </div>
@@ -127,7 +127,7 @@ export default function PipelineShowcase() {
             </div>
             <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
               <h4 className="font-metric-lg text-sm mb-1 uppercase">Transform</h4>
-              <p className="text-[#888888] text-sm font-body-md">
+              <p className="text-[#e3e2e2] text-sm font-body-md">
                 Schema validation and normalization using dbt models.
               </p>
             </div>
@@ -145,7 +145,7 @@ export default function PipelineShowcase() {
             </div>
             <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
               <h4 className="font-metric-lg text-sm mb-1 uppercase">Supabase</h4>
-              <p className="text-[#888888] text-sm">
+              <p className="text-[#e3e2e2] text-sm">
                 High-performance storage on PostgreSQL backend.
               </p>
             </div>
@@ -162,7 +162,7 @@ export default function PipelineShowcase() {
             </div>
             <div className="bg-[#1f2020] border border-[#1f1f1f] p-4 flex-1 hover:border-[#00ff88] transition-colors duration-300">
               <h4 className="font-metric-lg text-sm mb-1 uppercase">Dashboard</h4>
-              <p className="text-[#888888] text-sm">Real-time telemetry and KPI visualization.</p>
+              <p className="text-[#e3e2e2] text-sm">Real-time telemetry and KPI visualization.</p>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ export default function PipelineShowcase() {
           <div className="flex justify-between items-center mb-8">
             <div>
               <h3 className="font-metric-lg text-[#e3e2e2]">Live Temperature Data</h3>
-              <p className="font-code-md text-[#888888]">Accra - Last 24hrs</p>
+              <p className="font-code-md text-[#e3e2e2]">Accra - Last 24hrs</p>
             </div>
             <span className="material-symbols-outlined text-[#00ff88]">settings</span>
           </div>
@@ -231,7 +231,7 @@ export default function PipelineShowcase() {
                 </svg>
               </div>
             )}
-            <div className="flex justify-between mt-4 font-label-sm text-[#888888]">
+            <div className="flex justify-between mt-4 font-label-sm text-[#e3e2e2]">
               <span>00:00</span>
               <span>06:00</span>
               <span>12:00</span>
@@ -242,13 +242,13 @@ export default function PipelineShowcase() {
 
           <div className="mt-8 grid grid-cols-2 gap-4">
             <div className="p-4 bg-[#0a0a0a]/50 border border-[#3b4b3d]">
-              <span className="block text-xs uppercase tracking-widest text-[#888888] mb-1">
+              <span className="block text-xs uppercase tracking-widest text-[#e3e2e2] mb-1">
                 Average
               </span>
               <span className="font-metric-lg text-xl text-[#e3e2e2]">{avgTemp}°C</span>
             </div>
             <div className="p-4 bg-[#0a0a0a]/50 border border-[#3b4b3d]">
-              <span className="block text-xs uppercase tracking-widest text-[#888888] mb-1">
+              <span className="block text-xs uppercase tracking-widest text-[#e3e2e2] mb-1">
                 Uptime
               </span>
               <span className="font-metric-lg text-xl text-[#00ff88]">99.9%</span>

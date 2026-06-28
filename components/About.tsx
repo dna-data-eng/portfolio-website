@@ -29,9 +29,7 @@ export default function About() {
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="about">
       <div>
-        <p className="font-label-sm text-label-sm text-[#00ff88] tracking-widest uppercase mb-2">
-          About
-        </p>
+        <p className="font-label-sm text-label-sm text-[#00ff88] mb-2">About</p>
         <h2 className="font-headline-lg text-headline-lg text-[#e3e2e2] mb-12">$ whoami</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
@@ -48,7 +46,7 @@ export default function About() {
           </div>
 
           <div>
-            <div className="text-[#888888] text-sm leading-relaxed space-y-4 mb-10">
+            <div className="text-[#e3e2e2] text-base leading-7 space-y-4 mb-10">
               <p>
                 I&apos;m Dan Nyarkoh Andoh — a Data Engineer based in Accra, Ghana, building data
                 pipelines, engineering reliable infrastructure, and extracting insights from
@@ -72,17 +70,15 @@ export default function About() {
             <div className="space-y-6">
               {skillGroups.map((group) => (
                 <div key={group.label}>
-                  <h4 className="font-metric-lg text-[#00ff88] text-xs mb-3 uppercase tracking-wider">
-                    {group.label}
-                  </h4>
+                  <h4 className="font-metric-lg text-[#00ff88] text-sm mb-3">{group.label}</h4>
                   <div className="flex flex-wrap gap-2">
                     {group.tags.map((tag, idx) => (
                       <span
                         key={tag}
-                        className={`font-label-sm text-[10px] px-3 py-1 uppercase tracking-widest ${
+                        className={`font-label-sm text-xs px-3 py-1 ${
                           idx === 0
                             ? "border border-[#00ff88] text-[#00ff88]"
-                            : "border border-[#1f1f1f] text-[#888888]"
+                            : "border border-[#1f1f1f] text-[#e3e2e2]"
                         }`}
                       >
                         {tag}

@@ -34,15 +34,15 @@ export default function Home() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("opacity-100", "translate-y-0");
-          entry.target.classList.remove("opacity-0", "translate-y-10");
+          entry.target.classList.add("translate-y-0");
+          entry.target.classList.remove("translate-y-6");
         }
       });
     }, observerOptions);
 
     const divs = document.querySelectorAll("section > div");
     divs.forEach((el) => {
-      el.classList.add("transition-all", "duration-700", "opacity-0", "translate-y-10");
+      el.classList.add("transition-all", "duration-700", "translate-y-6");
       observer.observe(el);
     });
 
@@ -69,23 +69,23 @@ export default function Home() {
       <footer className="w-full py-section-gap bg-[#0a0a0a] border-t border-[#1f1f1f]">
         <div className="flex flex-col items-center gap-4 w-full px-gutter max-w-container-max mx-auto">
           <div className="flex gap-8 flex-wrap justify-center">
-            <a className="text-[#888888] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#about">
+            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#about">
               About
             </a>
-            <a className="text-[#888888] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#pipeline">
+            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#pipeline">
               Pipeline
             </a>
-            <a className="text-[#888888] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#projects">
+            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#projects">
               Projects
             </a>
-            <a className="text-[#888888] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#skills">
+            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#skills">
               Skills
             </a>
-            <a className="text-[#888888] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#contact">
+            <a className="text-[#c8c8c8] hover:text-[#00ff88] transition-colors font-label-sm text-label-sm" href="#contact">
               Contact
             </a>
           </div>
-          <p className="text-[#888888] font-code-md text-label-sm opacity-80">
+          <p className="text-[#e3e2e2] font-code-md text-label-sm">
             {"// DNA — Dan Nyarkoh Andoh · Data Engineer — Accra, Ghana 🇬🇭"}
           </p>
         </div>

@@ -58,7 +58,7 @@ export default function Navbar() {
               className={`transition-colors font-label-sm text-label-sm ${
                 activeSection === link.id
                   ? "text-[#00ff88] border-b-2 border-[#00ff88] pb-1"
-                  : "text-[#888888] hover:text-[#00ff88]"
+                  : "text-[#c8c8c8] hover:text-[#00ff88]"
               }`}
               href={`#${link.id}`}
             >
@@ -81,7 +81,7 @@ export default function Navbar() {
             <a
               key={link.id}
               className={`font-label-sm text-label-sm py-2 block ${
-                activeSection === link.id ? "text-[#00ff88]" : "text-[#888888]"
+                activeSection === link.id ? "text-[#00ff88]" : "text-[#c8c8c8]"
               }`}
               href={`#${link.id}`}
               onClick={() => setMobileMenuOpen(false)}

@@ -18,6 +18,7 @@ export default function Skills() {
         { name: "Python", detail: "ETL, automation & data quality" },
         { name: "SQL / PostgreSQL", detail: "Modeling, optimization & analytics" },
         { name: "Docker & Linux", detail: "Reproducible deployments" },
+        { name: "Git & GitHub", detail: "Version control & collaborative workflows" },
       ],
     },
     {

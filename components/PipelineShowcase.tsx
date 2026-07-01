@@ -43,8 +43,8 @@ const pipelineSteps = [
   },
   {
     icon: "database",
-    title: "Supabase",
-    description: "Persistent storage on PostgreSQL with typed access patterns.",
+    title: "PostgreSQL",
+    description: "Persistent storage with typed access patterns and reliable query performance.",
   },
   {
     icon: "monitoring",

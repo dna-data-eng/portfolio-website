@@ -12,8 +12,8 @@ export default function Projects() {
     {
       title: "Weather Pipeline",
       description:
-        "End-to-end pipeline ingesting real-time weather data for Accra via OpenWeatherMap API, storing readings in Supabase PostgreSQL, and visualizing temperature trends live on this dashboard.",
-      tags: ["PostgreSQL", "Python", "Supabase", "OpenWeatherMap", "Next.js", "Recharts"],
+        "End-to-end pipeline ingesting real-time weather data for Accra via OpenWeatherMap API, storing readings in PostgreSQL, and visualizing temperature trends live on this dashboard.",
+      tags: ["PostgreSQL", "Python", "OpenWeatherMap", "Next.js", "Recharts"],
       category: "data-engineering" as const,
       image:
         "https://lh3.googleusercontent.com/aida-public/AB6AXuCm_nFM9xJ5JeWylTD5EQkU5qS3w4yubzihxaIbmir9TfGbv7hdYqkT8loOoAl20ZW3hMgJ1UXKafzt5ICvddDEulFo5RCGseV8tUJeSf8oaPC7RHH_QXJiXAND9JyDX4quUlbOZNjFQhNgcNxMpW-dY87q6HbvoeCxKumUI3jjQyKDLqy0lW2_qaC6OXrkwT7NmvJXwsK-ZwnXYcPvZv0FEvGuu3wiBROQ6Kren3-E2WjdDsacjUKr4Cl2LcRJnufZOCBt8U3pBIy3",

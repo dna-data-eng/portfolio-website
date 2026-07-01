@@ -24,7 +24,7 @@ export default function Skills() {
     {
       title: "Data platform",
       items: [
-        { name: "Supabase", detail: "PostgreSQL & real-time APIs" },
+        { name: "PostgreSQL", detail: "Production storage & schema design" },
         { name: "pandas & sqlalchemy", detail: "Transformation pipelines" },
       ],
     },

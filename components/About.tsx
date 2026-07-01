@@ -60,8 +60,8 @@ export default function About() {
                 sqlalchemy) for transformation, and Docker on Ubuntu for reproducible deployments.
               </p>
               <p>
-                I also use n8n and AI tools like Gemini, Claude, and Ollama to automate and improve
-                data workflows — always with guardrails and observability in mind.
+                I also use AI tools like Gemini, Claude, and Ollama to automate and improve data
+                workflows — always with guardrails and observability in mind.
               </p>
               <p>
                 I&apos;m currently looking for opportunities in Germany or Switzerland, and

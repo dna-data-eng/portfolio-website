@@ -25,15 +25,6 @@ export default function Skills() {
       items: [
         { name: "Supabase", detail: "PostgreSQL & real-time APIs" },
         { name: "pandas & sqlalchemy", detail: "Transformation pipelines" },
-        { name: "n8n", detail: "Workflow automation" },
-      ],
-    },
-    {
-      title: "Frontend & delivery",
-      items: [
-        { name: "Next.js & React", detail: "Dashboards & internal tools" },
-        { name: "Recharts", detail: "Live data visualization" },
-        { name: "Git & CI practices", detail: "Reviewable, shippable code" },
       ],
     },
   ];

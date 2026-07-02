@@ -134,7 +134,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
               <path
                 d="M0 80 Q 20 60, 40 70 T 80 40 T 120 60 T 160 30 T 200 50 T 240 20 T 280 40 T 320 10 T 360 30 T 400 5"
                 fill="none"
-                stroke="#00ff88"
+                stroke="var(--color-brand)"
                 strokeWidth="2"
                 opacity="0.9"
               />
@@ -144,8 +144,8 @@ export default function Hero({ onOpenModal }: HeroProps) {
               />
               <defs>
                 <linearGradient id="grad-hero" x1="0%" x2="0%" y1="0%" y2="100%">
-                  <stop offset="0%" stopColor="#00ff88" stopOpacity="0.25" />
-                  <stop offset="100%" stopColor="#00ff88" stopOpacity="0" />
+                  <stop offset="0%" stopColor="var(--color-brand)" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="var(--color-brand)" stopOpacity="0" />
                 </linearGradient>
               </defs>
             </svg>

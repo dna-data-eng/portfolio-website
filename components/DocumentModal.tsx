@@ -50,19 +50,19 @@ export default function DocumentModal({ isOpen, onClose, type, fileUrl }: Docume
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0a0a0a]/80 backdrop-blur-md">
       <div className="bg-[#111111] border border-[#1f1f1f] w-full max-w-4xl max-h-[85vh] flex flex-col relative">
         <button
-          className="absolute -top-10 right-0 text-[#888888] hover:text-[#00ff88] flex items-center gap-2 font-metric-lg text-xs tracking-widest"
+          className="absolute -top-10 right-0 text-[#888888] hover:text-[var(--color-brand)] flex items-center gap-2 font-metric-lg text-xs tracking-widest"
           onClick={onClose}
         >
           CLOSE <span className="material-symbols-outlined text-sm">close</span>
         </button>
         <div className="p-4 border-b border-[#1f1f1f] flex justify-between items-center bg-[#0d0e0f]">
           <div className="flex items-center gap-4">
-            <span className="material-symbols-outlined text-[#00ff88]">picture_as_pdf</span>
+            <span className="material-symbols-outlined text-[var(--color-brand)]">picture_as_pdf</span>
             <span className="font-metric-lg text-sm text-[#e3e2e2]">{docTitle}</span>
           </div>
           <button
             onClick={handleDownload}
-            className="p-2 hover:bg-[#1f2020] text-[#888888] hover:text-[#00ff88] transition-colors"
+            className="p-2 hover:bg-[#1f2020] text-[#888888] hover:text-[var(--color-brand)] transition-colors"
           >
             <span className="material-symbols-outlined text-sm">download</span>
           </button>

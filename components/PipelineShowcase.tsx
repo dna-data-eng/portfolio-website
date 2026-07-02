@@ -174,16 +174,16 @@ export default function PipelineShowcase() {
                         borderRadius: "8px",
                       }}
                       labelStyle={{ color: "#adadad", fontSize: "12px" }}
-                      itemStyle={{ color: "#00ff88", fontSize: "12px" }}
+                      itemStyle={{ color: "#22c55e", fontSize: "12px" }}
                       formatter={(value: any) => [`${value}°C`, "Temperature"]}
                     />
                     <Line
                       type="monotone"
                       dataKey="temp"
-                      stroke="#00ff88"
+                      stroke="#22c55e"
                       strokeWidth={2.5}
                       dot={false}
-                      activeDot={{ r: 5, fill: "#00ff88" }}
+                      activeDot={{ r: 5, fill: "#22c55e" }}
                     />
                   </LineChart>
                 </ResponsiveContainer>

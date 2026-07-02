@@ -42,7 +42,7 @@ export default function Skills() {
       <SectionHeader
         eyebrow="Skills"
         title="What I bring to a team"
-        description="Depth in data engineering, with the pragmatism to ship and maintain production systems."
+        description="Strong data engineering skills and a practical focus on shipping and maintaining production systems."
         className="mb-10"
       />
 

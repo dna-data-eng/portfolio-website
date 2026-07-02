@@ -12,7 +12,7 @@ export default function Projects() {
     {
       title: "Weather Pipeline",
       description:
-        "End-to-end pipeline ingesting real-time weather data for Accra via OpenWeatherMap API, storing readings in PostgreSQL, and visualizing temperature trends live on this dashboard.",
+        "A pipeline that ingests real-time weather data for Accra through the OpenWeatherMap API, stores readings in PostgreSQL, and visualizes temperature trends on this dashboard.",
       tags: ["PostgreSQL", "Python", "OpenWeatherMap", "Next.js", "Recharts"],
       category: "data-engineering" as const,
       image:
@@ -21,7 +21,7 @@ export default function Projects() {
     {
       title: "Ghana Economic Dashboard",
       description:
-        "Visualizing national fiscal data through a custom-built API and real-time frontend dashboard.",
+        "National fiscal data visualized through a custom API and a live web dashboard.",
       tags: ["PostgreSQL", "React", "D3.js"],
       category: "data-engineering" as const,
       image:
@@ -53,7 +53,7 @@ export default function Projects() {
       <SectionHeader
         eyebrow="Work"
         title="Selected projects"
-        description="Real systems I've built — focused on reliability, clarity, and measurable outcomes."
+        description="Systems I have built with a focus on reliability, clarity, and measurable outcomes."
       />
 
       <div className="flex flex-wrap gap-2 mb-8">

@@ -61,7 +61,7 @@ export default function Home() {
             ))}
           </nav>
           <p className="text-sm text-[var(--color-fg-secondary)] text-center">
-            Dan Nyarkoh Andoh · Data Engineer · Accra, Ghana 🇬🇭
+            Dan Nyarkoh Andoh, Data Engineer, Accra, Ghana 🇬🇭
           </p>
         </div>
       </footer>

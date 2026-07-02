@@ -32,7 +32,7 @@ export default function Contact() {
       <SectionHeader
         eyebrow="Contact"
         title="Let's work together"
-        description="Have a role, project, or question? Send a message — I typically respond within a few days."
+        description="Have a role, project, or question? Send a message. I typically respond within a few days."
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -134,7 +134,7 @@ export default function Contact() {
           </button>
           {submitted && (
             <p className="text-sm text-[var(--color-brand)] text-center" role="status">
-              Opening your email client — thank you for reaching out.
+              Opening your email client. Thank you for reaching out.
             </p>
           )}
         </form>

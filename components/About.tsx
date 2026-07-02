@@ -31,7 +31,7 @@ export default function About() {
         <SectionHeader
           eyebrow="About"
           title="A bit about me"
-          description="Engineer first — I care about systems that are reliable, readable, and built to last."
+          description="I'm an engineer first. I care about systems that are reliable, readable, and built to last."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -51,7 +51,7 @@ export default function About() {
           <div>
             <div className="text-[var(--color-fg-secondary)] text-base leading-relaxed space-y-4 mb-10">
               <p>
-                I&apos;m Dan Nyarkoh Andoh — a Data Engineer based in Accra, Ghana. I build data
+                I&apos;m Dan Nyarkoh Andoh, a Data Engineer based in Accra, Ghana. I build data
                 pipelines, engineer reliable infrastructure, and extract insights from complex
                 datasets.
               </p>
@@ -61,7 +61,7 @@ export default function About() {
               </p>
               <p>
                 I also use AI tools like Gemini, Claude, and Ollama to automate and improve data
-                workflows — always with guardrails and observability in mind.
+                workflows, with guardrails and observability built in from the start.
               </p>
               <p>
                 I&apos;m currently looking for opportunities in Germany or Switzerland, and

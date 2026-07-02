@@ -103,7 +103,7 @@ export default function PipelineShowcase() {
       <SectionHeader
         eyebrow="Pipeline"
         title="Live data pipeline"
-        description="From external API to stored records to the chart below — running on real data from Accra."
+        description="This pipeline pulls from an external API, stores records in PostgreSQL, and charts live weather data from Accra."
       />
 
       <div className="flex flex-col lg:flex-row gap-8 items-stretch">
@@ -141,7 +141,7 @@ export default function PipelineShowcase() {
               <h3 className="text-base font-semibold text-[var(--color-fg-primary)]">
                 Temperature trend
               </h3>
-              <p className="text-sm text-[var(--color-fg-muted)] mt-1">Accra · last 24 hours</p>
+              <p className="text-sm text-[var(--color-fg-muted)] mt-1">Accra, last 24 hours</p>
             </div>
             <span className="material-symbols-outlined text-[var(--color-brand)]">insights</span>
           </div>

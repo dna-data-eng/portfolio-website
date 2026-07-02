@@ -60,7 +60,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
     >
       <div className="max-w-3xl">
         <p className="text-sm font-medium text-[var(--color-brand)] mb-4">
-          Data Engineer · Accra, Ghana 🇬🇭
+          Data Engineer, Accra, Ghana 🇬🇭
         </p>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--color-fg-primary)] mb-6 leading-tight">
@@ -70,7 +70,8 @@ export default function Hero({ onOpenModal }: HeroProps) {
 
         <p className="text-lg md:text-xl text-[var(--color-fg-secondary)] mb-10 max-w-xl leading-relaxed">
           I build data pipelines, engineer reliable infrastructure, and turn complex datasets into
-          clear insights — with the same care for craft you&apos;d expect from a production platform team.
+          clear insights. I hold myself to the same standard of craft you would expect on a
+          production platform team.
         </p>
 
         <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8">
@@ -122,7 +123,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
           </div>
           <div className="mb-4">
             <span className="text-3xl font-semibold text-[var(--color-fg-primary)] block mb-1">
-              {ingestedCount === null ? "—" : ingestedCount.toLocaleString()}
+              {ingestedCount === null ? "..." : ingestedCount.toLocaleString()}
             </span>
             <span className="text-sm text-[var(--color-fg-muted)]">
               Weather records ingested today

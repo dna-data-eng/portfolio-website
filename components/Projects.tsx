@@ -1,53 +1,34 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import SectionHeader from "./SectionHeader";
 
-type FilterCategory = "all" | "data-engineering";
+const projectList = [
+  {
+    title: "Weather Pipeline",
+    description:
+      "A pipeline that ingests real-time weather data for Accra through the OpenWeatherMap API, stores readings in PostgreSQL, and visualizes temperature trends on this dashboard.",
+    tags: ["PostgreSQL", "Python", "OpenWeatherMap", "Next.js", "Recharts"],
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCm_nFM9xJ5JeWylTD5EQkU5qS3w4yubzihxaIbmir9TfGbv7hdYqkT8loOoAl20ZW3hMgJ1UXKafzt5ICvddDEulFo5RCGseV8tUJeSf8oaPC7RHH_QXJiXAND9JyDX4quUlbOZNjFQhNgcNxMpW-dY87q6HbvoeCxKumUI3jjQyKDLqy0lW2_qaC6OXrkwT7NmvJXwsK-ZwnXYcPvZv0FEvGuu3wiBROQ6Kren3-E2WjdDsacjUKr4Cl2LcRJnufZOCBt8U3pBIy3",
+  },
+  {
+    title: "Ghana Economic Dashboard",
+    description:
+      "National fiscal data visualized through a custom API and a live web dashboard.",
+    tags: ["PostgreSQL", "React", "D3.js"],
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuB_uyFtR5AuZqGLw8550oEYLxTQNfzEArKntmIkCzZ4dqqzUfTbnxXFdeSJxr4tpc_NzlDJHRmPlDmeFP_5ht0_HaX1r4H2rKc3j7IxS8QOvZ2JoyCanyEIkmpMCqVj4uIvu1Nu6KwxDTjq6p8073foUm0KaSxGZYyY-esV5XsC0e_VkjpqUgA6dBBIE9jpP2qY8W7nLIX0l6-Gte34qCY10hfJM_WIW6tBzsRyywy-StP9sXkoyGdA6wbQJ6S6qU_iaMp1npOS__yV",
+  },
+  {
+    title: "GitHub Activity Tracker",
+    description:
+      "Aggregating and analyzing commit patterns across large-scale open-source repositories.",
+    tags: ["Go", "Redis", "Docker"],
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuC7WNEMlueNi0zqmVNRQviAq3JyuiuLKn0IQcekJfQR_LL-usG6NtRpXxay6pBRC0iMQmVvdNGJQxg1PWQjagE8QorxKCVVSkidZJCjDNhzVDuLEBms4rD0e7d-eyXYswR8jmRCimM5tS5PEOEmAZSmaR0CPl7x4UibIEXOYhqZwkE8QYorI2cT05hhLtVC1U3-3An6Mb4PD0Ey_ilh2Fm49Z3LifjjqbXGQdE2HL5xICKM8ISUCgHt_JAJpD-EqcWYI9Bh2mVBrxL0",
+  },
+];
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
-
-  const projectList = [
-    {
-      title: "Weather Pipeline",
-      description:
-        "A pipeline that ingests real-time weather data for Accra through the OpenWeatherMap API, stores readings in PostgreSQL, and visualizes temperature trends on this dashboard.",
-      tags: ["PostgreSQL", "Python", "OpenWeatherMap", "Next.js", "Recharts"],
-      category: "data-engineering" as const,
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCm_nFM9xJ5JeWylTD5EQkU5qS3w4yubzihxaIbmir9TfGbv7hdYqkT8loOoAl20ZW3hMgJ1UXKafzt5ICvddDEulFo5RCGseV8tUJeSf8oaPC7RHH_QXJiXAND9JyDX4quUlbOZNjFQhNgcNxMpW-dY87q6HbvoeCxKumUI3jjQyKDLqy0lW2_qaC6OXrkwT7NmvJXwsK-ZwnXYcPvZv0FEvGuu3wiBROQ6Kren3-E2WjdDsacjUKr4Cl2LcRJnufZOCBt8U3pBIy3",
-    },
-    {
-      title: "Ghana Economic Dashboard",
-      description:
-        "National fiscal data visualized through a custom API and a live web dashboard.",
-      tags: ["PostgreSQL", "React", "D3.js"],
-      category: "data-engineering" as const,
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuB_uyFtR5AuZqGLw8550oEYLxTQNfzEArKntmIkCzZ4dqqzUfTbnxXFdeSJxr4tpc_NzlDJHRmPlDmeFP_5ht0_HaX1r4H2rKc3j7IxS8QOvZ2JoyCanyEIkmpMCqVj4uIvu1Nu6KwxDTjq6p8073foUm0KaSxGZYyY-esV5XsC0e_VkjpqUgA6dBBIE9jpP2qY8W7nLIX0l6-Gte34qCY10hfJM_WIW6tBzsRyywy-StP9sXkoyGdA6wbQJ6S6qU_iaMp1npOS__yV",
-    },
-    {
-      title: "GitHub Activity Tracker",
-      description:
-        "Aggregating and analyzing commit patterns across large-scale open-source repositories.",
-      tags: ["Go", "Redis", "Docker"],
-      category: "data-engineering" as const,
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC7WNEMlueNi0zqmVNRQviAq3JyuiuLKn0IQcekJfQR_LL-usG6NtRpXxay6pBRC0iMQmVvdNGJQxg1PWQjagE8QorxKCVVSkidZJCjDNhzVDuLEBms4rD0e7d-eyXYswR8jmRCimM5tS5PEOEmAZSmaR0CPl7x4UibIEXOYhqZwkE8QYorI2cT05hhLtVC1U3-3An6Mb4PD0Ey_ilh2Fm49Z3LifjjqbXGQdE2HL5xICKM8ISUCgHt_JAJpD-EqcWYI9Bh2mVBrxL0",
-    },
-  ];
-
-  const filters: { id: FilterCategory; label: string }[] = [
-    { id: "all", label: "All projects" },
-    { id: "data-engineering", label: "Data engineering" },
-  ];
-
-  const filteredProjects =
-    activeFilter === "all"
-      ? projectList
-      : projectList.filter((p) => p.category === activeFilter);
-
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="projects">
       <SectionHeader
@@ -56,26 +37,13 @@ export default function Projects() {
         description="Systems I have built with a focus on reliability, clarity, and measurable outcomes."
       />
 
-      <div className="flex flex-wrap gap-2 mb-8">
-        {filters.map((filter) => (
-          <button
-            key={filter.id}
-            type="button"
-            onClick={() => setActiveFilter(filter.id)}
-            className={`btn-subtle ${activeFilter === filter.id ? "is-active" : ""}`}
-          >
-            {filter.label}
-          </button>
-        ))}
+      <div className="mb-8">
+        <span className="badge badge-brand">Data engineering</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProjects.map((project, idx) => (
-          <article
-            key={idx}
-            data-cat={project.category}
-            className="card-interactive flex flex-col overflow-hidden"
-          >
+        {projectList.map((project) => (
+          <article key={project.title} className="card-interactive flex flex-col overflow-hidden">
             <div className="h-44 bg-[var(--color-canvas-subtle)] overflow-hidden">
               <div
                 className="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105"

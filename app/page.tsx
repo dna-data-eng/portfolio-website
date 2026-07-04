@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Experience from "@/components/Experience";
 import PipelineShowcase from "@/components/PipelineShowcase";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
@@ -28,6 +29,7 @@ export default function Home() {
 
   const footerLinks = [
     { href: "#about", label: "About" },
+    { href: "#experience", label: "Experience" },
     { href: "#pipeline", label: "Pipeline" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
@@ -41,6 +43,7 @@ export default function Home() {
       <main className="relative z-10 pt-20">
         <Hero onOpenModal={openModal} />
         <About />
+        <Experience />
         <PipelineShowcase />
         <Projects />
         <Skills />

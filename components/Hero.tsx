@@ -50,7 +50,6 @@ export default function Hero({ onOpenModal }: HeroProps) {
   const metaPills = [
     { label: "Available for work" },
     { label: "Open to remote and relocation" },
-    { label: "Learning Deutsch 🇩🇪" },
   ];
 
   return (

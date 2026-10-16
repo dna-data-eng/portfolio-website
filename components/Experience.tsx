@@ -3,6 +3,17 @@ import SectionHeader from "./SectionHeader";
 
 const experiences = [
   {
+    role: "Graphic Designer and Large-Format Operator",
+    company: "Vision Publicity, Ghana",
+    period: "April 2022 to Present",
+    type: "Full-time",
+    highlights: [
+      "Produce large-format print jobs such as banners, posters, and signage for clients.",
+      "Operate large-format printing equipment and check output for color accuracy and print quality before delivery.",
+      "Meet client deadlines and manage orders accurately under time pressure.",
+    ],
+  },
+  {
     role: "Intern",
     company: "Agriculture Development Bank (ADB), Ghana",
     period: "1 month",
@@ -14,14 +25,13 @@ const experiences = [
     ],
   },
   {
-    role: "Print Shop Staff",
-    company: "Vision Publicity, Ghana",
-    period: "April 2022 to December 2024",
-    type: "Full-time",
+    role: "Teacher",
+    company: "PROMABS, Ghana",
+    period: "January 2022 to April 2022",
+    type: "Teaching",
     highlights: [
-      "Worked in print production for nearly three years, supporting daily operations at Vision Publicity.",
-      "Managed client orders, production schedules, and quality checks before delivery.",
-      "Built consistency, reliability, and attention to detail in a deadline-driven environment.",
+      "Taught students, prepared lessons, and assessed student progress.",
+      "Managed classroom activities and communicated clearly with students.",
     ],
   },
 ];
@@ -32,7 +42,7 @@ export default function Experience() {
       <SectionHeader
         eyebrow="Experience"
         title="Where I have worked"
-        description="Professional background across operations and banking, with a focus on reliability and structured work."
+        description="Professional background across print production, banking, and teaching, with a focus on reliability and structured work."
       />
 
       <div className="space-y-4 max-w-3xl">

@@ -24,7 +24,7 @@ const skillGroups = [
   },
   {
     label: "Languages",
-    tags: ["English", "Deutsch 🇩🇪 (Learning)"],
+    tags: ["English"],
   },
 ];
 
@@ -70,8 +70,7 @@ export default function About() {
               </p>
               <p>
                 I am looking for an internship or entry-level role in database administration or
-                database support, remote or on-site, and I am learning Deutsch 🇩🇪 alongside my
-                studies.
+                database support, remote or on-site.
               </p>
             </div>
 

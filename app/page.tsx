@@ -8,6 +8,8 @@ import Experience from "@/components/Experience";
 import PipelineShowcase from "@/components/PipelineShowcase";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import Tools from "@/components/Tools";
+import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import DotGrid from "@/components/DotGrid";
 import DocumentModal from "@/components/DocumentModal";
@@ -29,10 +31,11 @@ export default function Home() {
 
   const footerLinks = [
     { href: "#about", label: "About" },
-    { href: "#experience", label: "Experience" },
-    { href: "#pipeline", label: "Live project" },
-    { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
+    { href: "#tools", label: "Tools" },
+    { href: "#projects", label: "Projects" },
+    { href: "#experience", label: "Experience" },
+    { href: "#certifications", label: "Certifications" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -40,19 +43,24 @@ export default function Home() {
     <>
       <DotGrid />
       <Navbar />
-      <main className="relative z-10 pt-20">
+      <main className="relative z-10 pt-16">
         <Hero onOpenModal={openModal} />
         <About />
-        <Experience />
-        <PipelineShowcase />
-        <Projects />
         <Skills />
+        <Tools />
+        <Projects />
+        <PipelineShowcase />
+        <Experience />
+        <Certifications />
         <Contact />
       </main>
 
-      <footer className="w-full py-12 border-t border-[var(--color-stroke-subtle)] bg-[var(--color-canvas-subtle)]">
-        <div className="flex flex-col items-center gap-5 w-full px-gutter max-w-container-max mx-auto">
-          <nav className="flex gap-6 flex-wrap justify-center" aria-label="Footer">
+      <footer className="w-full py-10 border-t border-[var(--color-stroke-subtle)] bg-[var(--color-canvas-subtle)]">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 w-full px-gutter max-w-container-max mx-auto">
+          <p className="text-sm text-[var(--color-fg-secondary)]">
+            Dan Nyarkoh Andoh, Junior Database Administrator, Cape Coast, Ghana 🇬🇭
+          </p>
+          <nav className="flex gap-x-6 gap-y-2 flex-wrap" aria-label="Footer">
             {footerLinks.map((link) => (
               <a
                 key={link.href}
@@ -63,9 +71,6 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <p className="text-sm text-[var(--color-fg-secondary)] text-center">
-            Dan Nyarkoh Andoh, Junior Database Administrator, Cape Coast, Ghana 🇬🇭
-          </p>
         </div>
       </footer>
 

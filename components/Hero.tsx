@@ -7,32 +7,37 @@ interface HeroProps {
   onOpenModal: (type: "cv" | "resume", fileUrl: string) => void;
 }
 
+type LogLine = { kind: "cmd" | "out" | "ok" | "err"; text: string };
+
+const labLog: LogLine[] = [
+  { kind: "cmd", text: "pg_dump -U postgres -d sql_practice -f backup_file.sql" },
+  { kind: "cmd", text: "psql -d sql_practice_restored -f backup_file.sql" },
+  { kind: "ok", text: "restore verified: tables, views, data intact" },
+  { kind: "cmd", text: "SELECT * FROM orders;  -- as analyst_jane" },
+  { kind: "err", text: "ERROR: permission denied for table orders (42501)" },
+  { kind: "cmd", text: "EXPLAIN ANALYZE SELECT * FROM completed_orders_backup;" },
+  { kind: "out", text: "Execution Time: 5.209 ms" },
+  { kind: "cmd", text: "ANALYZE completed_orders_backup;" },
+  { kind: "out", text: "Execution Time: 0.027 ms" },
+];
+
+const features = [
+  { icon: "backup", title: "Backup & recovery", detail: "Tested restores" },
+  { icon: "lock", title: "Access control", detail: "Least privilege" },
+  { icon: "speed", title: "Performance", detail: "EXPLAIN ANALYZE" },
+  { icon: "cleaning_services", title: "Maintenance", detail: "VACUUM & ANALYZE" },
+];
+
+const lineColor: Record<LogLine["kind"], string> = {
+  cmd: "text-[var(--color-fg-primary)]",
+  out: "text-[var(--color-fg-muted)]",
+  ok: "text-[var(--color-ok)]",
+  err: "text-[var(--color-err)]",
+};
+
 export default function Hero({ onOpenModal }: HeroProps) {
-  const [ingestedCount, setIngestedCount] = useState<number | null>(null);
   const [cvUrl, setCvUrl] = useState("");
   const [resumeUrl, setResumeUrl] = useState("");
-
-  const fetchLogsCount = async () => {
-    try {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      const { count, error } = await supabase
-        .from("weather_logs")
-        .select("*", { count: "exact", head: true })
-        .gte("recorded_at", today.toISOString());
-
-      if (error) {
-        console.error("Supabase count query error:", error);
-        setIngestedCount(-1);
-        return;
-      }
-      setIngestedCount(count);
-    } catch (e) {
-      console.error(e);
-      setIngestedCount(-1);
-    }
-  };
 
   useEffect(() => {
     const { data: cvData } = supabase.storage.from("Documents").getPublicUrl("cv.pdf");
@@ -41,120 +46,111 @@ export default function Hero({ onOpenModal }: HeroProps) {
     setResumeUrl(resumeData.publicUrl);
   }, []);
 
-  useEffect(() => {
-    fetchLogsCount();
-    const interval = setInterval(fetchLogsCount, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const metaPills = [
-    { label: "Available for work" },
-    { label: "Open to remote and relocation" },
-  ];
-
   return (
     <section
-      className="min-h-screen flex flex-col justify-center px-gutter max-w-container-max mx-auto py-section-gap"
+      className="px-gutter max-w-container-max mx-auto min-h-[calc(100vh-4rem)] flex items-center py-16 lg:py-20"
       id="hero"
     >
-      <div className="max-w-3xl">
-        <p className="text-sm font-medium text-[var(--color-brand)] mb-4">
-          Aspiring Junior Database Administrator, Cape Coast, Ghana 🇬🇭
-        </p>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center w-full">
+        <div className="lg:col-span-7">
+          <span className="meta-pill font-mono-ui mb-6">
+            <span className="status-dot" />
+            Open to junior DBA roles and internships
+          </span>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--color-fg-primary)] mb-6 leading-tight">
-          Hi, I&apos;m{" "}
-          <span className="text-[var(--color-brand)]">Dan Nyarkoh Andoh</span>
-        </h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] text-[var(--color-fg-primary)] mb-6">
+            Keeping{" "}
+            <span className="text-[var(--color-brand)]">databases</span> secure, fast, and
+            recoverable.
+          </h1>
 
-        <p className="text-lg md:text-xl text-[var(--color-fg-secondary)] mb-10 max-w-xl leading-relaxed">
-          I work with PostgreSQL to design, secure, back up, and tune databases. I practise access
-          control, backup and recovery, query tuning, and routine maintenance, and I am building
-          toward database security.
-        </p>
+          <p className="text-base md:text-lg text-[var(--color-fg-secondary)] mb-8 max-w-xl leading-relaxed">
+            Hi, I&apos;m Dan. An aspiring junior database administrator based in Cape Coast,
+            Ghana, working with PostgreSQL on access control, backup and recovery, query tuning,
+            and routine maintenance, with a growing focus on database security.
+          </p>
 
-        <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8">
-          <a className="btn-primary" href="#pipeline">
-            View live project
-            <span className="material-symbols-outlined text-base">arrow_forward</span>
-          </a>
-          <button type="button" className="btn-secondary" onClick={() => onOpenModal("cv", cvUrl)}>
-            <span className="material-symbols-outlined text-base">description</span>
-            CV
-          </button>
-          <button
-            type="button"
-            className="btn-secondary"
-            onClick={() => onOpenModal("resume", resumeUrl)}
-          >
-            <span className="material-symbols-outlined text-base">article</span>
-            Resume
-          </button>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-4">
+            <a className="btn-primary" href="#projects">
+              View projects
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </a>
+            <a className="btn-secondary" href="#contact">
+              Get in touch
+            </a>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mb-10">
+            <button type="button" className="btn-subtle" onClick={() => onOpenModal("cv", cvUrl)}>
+              <span className="material-symbols-outlined text-base">description</span>
+              CV
+            </button>
+            <button
+              type="button"
+              className="btn-subtle"
+              onClick={() => onOpenModal("resume", resumeUrl)}
+            >
+              <span className="material-symbols-outlined text-base">article</span>
+              Resume
+            </button>
+            <a
+              href="https://github.com/dna-data-eng"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-subtle"
+            >
+              <span className="material-symbols-outlined text-base">code</span>
+              GitHub
+            </a>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 pt-8 border-t border-[var(--color-stroke-subtle)]">
+            {features.map((f) => (
+              <div key={f.title}>
+                <span className="material-symbols-outlined text-[var(--color-brand)] text-xl mb-2 block">
+                  {f.icon}
+                </span>
+                <p className="font-mono-ui text-xs font-medium text-[var(--color-fg-primary)] mb-0.5">
+                  {f.title}
+                </p>
+                <p className="text-xs text-[var(--color-fg-muted)]">{f.detail}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-12">
-          {metaPills.map((pill) => (
-            <span key={pill.label} className="meta-pill">
-              <span className="status-dot" />
-              {pill.label}
-            </span>
-          ))}
-          <a
-            href="https://github.com/dna-data-eng"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="meta-pill link-brand hover:no-underline"
-          >
-            GitHub
-            <span className="material-symbols-outlined text-sm">open_in_new</span>
-          </a>
-        </div>
-
-        <div className="card p-6 max-w-md">
-          <div className="flex justify-between items-start mb-5">
-            <div className="flex items-center gap-2">
-              <span className="status-dot" aria-hidden="true" />
-              <span className="text-sm font-medium text-[var(--color-fg-primary)]">
-                Live database status
+        <div className="lg:col-span-5">
+          <div className="terminal" aria-label="Excerpt from my PostgreSQL practice lab log">
+            <div className="terminal-bar">
+              <span className="terminal-dot" />
+              <span className="terminal-dot" />
+              <span className="terminal-dot" />
+              <span className="font-mono-ui text-xs text-[var(--color-fg-muted)] ml-2">
+                lab-log.sh
               </span>
             </div>
-            <span className="badge badge-brand">
-              {ingestedCount !== null && ingestedCount < 0 ? "Offline" : "Active"}
-            </span>
+            <div className="p-5 font-mono-ui text-[12.5px] leading-relaxed space-y-2">
+              {labLog.map((line, i) => (
+                <p
+                  key={i}
+                  className={`log-line break-words ${lineColor[line.kind]} ${
+                    line.kind === "out" ? "pl-4" : ""
+                  }`}
+                  style={{ animationDelay: `${i * 140}ms` }}
+                >
+                  {line.kind === "cmd" && (
+                    <span className="text-[var(--color-brand)] mr-2">$</span>
+                  )}
+                  {line.kind === "ok" && <span className="mr-2">✓</span>}
+                  {line.kind === "err" && <span className="mr-2">✗</span>}
+                  {line.text}
+                </p>
+              ))}
+            </div>
           </div>
-          <div className="mb-4">
-            <span className="text-3xl font-semibold text-[var(--color-fg-primary)] block mb-1">
-              {ingestedCount === null
-                ? "..."
-                : ingestedCount < 0
-                ? "Unavailable"
-                : ingestedCount.toLocaleString()}
-            </span>
-            <span className="text-sm text-[var(--color-fg-muted)]">
-              Weather records stored today
-            </span>
-          </div>
-          <div className="h-14 w-full">
-            <svg className="w-full h-full" viewBox="0 0 400 100" aria-hidden="true">
-              <path
-                d="M0 80 Q 20 60, 40 70 T 80 40 T 120 60 T 160 30 T 200 50 T 240 20 T 280 40 T 320 10 T 360 30 T 400 5"
-                fill="none"
-                stroke="var(--color-brand)"
-                strokeWidth="2"
-                opacity="0.9"
-              />
-              <path
-                d="M0 80 Q 20 60, 40 70 T 80 40 T 120 60 T 160 30 T 200 50 T 240 20 T 280 40 T 320 10 T 360 30 T 400 5 L 400 100 L 0 100 Z"
-                fill="url(#grad-hero)"
-              />
-              <defs>
-                <linearGradient id="grad-hero" x1="0%" x2="0%" y1="0%" y2="100%">
-                  <stop offset="0%" stopColor="var(--color-brand)" stopOpacity="0.25" />
-                  <stop offset="100%" stopColor="var(--color-brand)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+          <p className="font-mono-ui text-xs text-[var(--color-fg-muted)] mt-3">
+            From my PostgreSQL practice lab
+          </p>
         </div>
       </div>
     </section>

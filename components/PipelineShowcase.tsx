@@ -152,16 +152,16 @@ export default function PipelineShowcase() {
               <div className="w-full h-full min-h-[200px]">
                 <ResponsiveContainer width="100%" height={200}>
                   <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="4" stroke="rgba(255,255,255,0.06)" vertical={false} />
+                    <CartesianGrid strokeDasharray="4" stroke="rgba(148,163,184,0.12)" vertical={false} />
                     <XAxis
                       dataKey="time"
-                      stroke="#adadad"
+                      stroke="#8b97ab"
                       fontSize={11}
                       tickLine={false}
                       axisLine={false}
                     />
                     <YAxis
-                      stroke="#adadad"
+                      stroke="#8b97ab"
                       fontSize={11}
                       tickLine={false}
                       axisLine={false}
@@ -170,21 +170,21 @@ export default function PipelineShowcase() {
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: "#1f1f1f",
+                        backgroundColor: "#0f141d",
                         borderColor: "rgba(255,255,255,0.12)",
                         borderRadius: "8px",
                       }}
-                      labelStyle={{ color: "#adadad", fontSize: "12px" }}
-                      itemStyle={{ color: "#22c55e", fontSize: "12px" }}
+                      labelStyle={{ color: "#8b97ab", fontSize: "12px" }}
+                      itemStyle={{ color: "#3b82f6", fontSize: "12px" }}
                       formatter={(value: any) => [`${value}°C`, "Temperature"]}
                     />
                     <Line
                       type="monotone"
                       dataKey="temp"
-                      stroke="#22c55e"
+                      stroke="#3b82f6"
                       strokeWidth={2.5}
                       dot={false}
-                      activeDot={{ r: 5, fill: "#22c55e" }}
+                      activeDot={{ r: 5, fill: "#3b82f6" }}
                     />
                   </LineChart>
                 </ResponsiveContainer>

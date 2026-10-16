@@ -6,28 +6,36 @@ type Project = {
   status?: string;
   description: string;
   tags: string[];
-  image?: string;
+  icon: string;
   liveHref?: string;
   repoHref?: string;
 };
 
 const projectList: Project[] = [
   {
-    title: "Weather Database Project",
+    title: "PostgreSQL Administration Lab",
+    icon: "terminal",
+    status: "Self-directed",
     description:
-      "Fetches Accra weather readings from the OpenWeatherMap API through a Next.js route, stores them in a PostgreSQL table on Supabase, and charts the last 24 hours on this site.",
-    tags: ["PostgreSQL", "Supabase", "Next.js", "OpenWeatherMap", "Recharts"],
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCm_nFM9xJ5JeWylTD5EQkU5qS3w4yubzihxaIbmir9TfGbv7hdYqkT8loOoAl20ZW3hMgJ1UXKafzt5ICvddDEulFo5RCGseV8tUJeSf8oaPC7RHH_QXJiXAND9JyDX4quUlbOZNjFQhNgcNxMpW-dY87q6HbvoeCxKumUI3jjQyKDLqy0lW2_qaC6OXrkwT7NmvJXwsK-ZwnXYcPvZv0FEvGuu3wiBROQ6Kren3-E2WjdDsacjUKr4Cl2LcRJnufZOCBt8U3pBIy3",
-    liveHref: "#pipeline",
-    repoHref: "https://github.com/dna-data-eng/portfolio-website",
+      "Hands-on practice with roles and least privilege, a full pg_dump backup restored and verified in a fresh database, and query tuning. Refreshing stale statistics with ANALYZE cut one query from 5.2 ms to 0.03 ms.",
+    tags: ["PostgreSQL", "pg_dump", "EXPLAIN ANALYZE", "VACUUM & ANALYZE"],
   },
   {
     title: "Vision Publicity Database",
+    icon: "print",
     status: "In progress",
     description:
       "A PostgreSQL database for a print shop covering customers, jobs, materials, and invoices. Planned scope: normalized schema, role-based access with least privilege, a tested backup and restore, and a stored procedure with a trigger.",
     tags: ["PostgreSQL", "Schema design", "Access control", "Backup & restore"],
+  },
+  {
+    title: "Weather Database Project",
+    icon: "partly_cloudy_day",
+    description:
+      "Fetches Accra weather readings from the OpenWeatherMap API through a Next.js route, stores them in a PostgreSQL table on Supabase, and charts the last 24 hours on this site.",
+    tags: ["PostgreSQL", "Supabase", "Next.js", "OpenWeatherMap", "Recharts"],
+    liveHref: "#pipeline",
+    repoHref: "https://github.com/dna-data-eng/portfolio-website",
   },
 ];
 
@@ -35,29 +43,18 @@ export default function Projects() {
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="projects">
       <SectionHeader
-        eyebrow="Work"
+        eyebrow="Projects"
         title="Selected projects"
         description="Database work with a focus on reliability, security, and clear documentation."
       />
 
-      <div className="mb-8">
-        <span className="badge badge-brand">Database projects</span>
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projectList.map((project) => (
           <article key={project.title} className="card-interactive flex flex-col overflow-hidden">
-            <div className="h-44 bg-[var(--color-canvas-subtle)] overflow-hidden flex items-center justify-center">
-              {project.image ? (
-                <div
-                  className="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105"
-                  style={{ backgroundImage: `url('${project.image}')` }}
-                />
-              ) : (
-                <span className="material-symbols-outlined text-5xl text-[var(--color-brand)]">
-                  database
-                </span>
-              )}
+            <div className="h-36 bg-[var(--color-canvas-subtle)] border-b border-[var(--color-stroke-subtle)] flex items-center justify-center">
+              <span className="material-symbols-outlined text-5xl text-[var(--color-brand)]">
+                {project.icon}
+              </span>
             </div>
             <div className="p-5 flex flex-col flex-1">
               <div className="flex items-center justify-between gap-2 mb-2">

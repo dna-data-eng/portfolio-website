@@ -30,7 +30,7 @@ export default function Home() {
   const footerLinks = [
     { href: "#about", label: "About" },
     { href: "#experience", label: "Experience" },
-    { href: "#pipeline", label: "Pipeline" },
+    { href: "#pipeline", label: "Live project" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
     { href: "#contact", label: "Contact" },
@@ -64,7 +64,7 @@ export default function Home() {
             ))}
           </nav>
           <p className="text-sm text-[var(--color-fg-secondary)] text-center">
-            Dan Nyarkoh Andoh, Data Engineer, Accra, Ghana 🇬🇭
+            Dan Nyarkoh Andoh, Junior Database Administrator, Accra, Ghana 🇬🇭
           </p>
         </div>
       </footer>

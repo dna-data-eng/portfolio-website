@@ -29,7 +29,7 @@ export default function Navbar() {
   const navLinks = [
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
-    { id: "pipeline", label: "Pipeline" },
+    { id: "pipeline", label: "Live project" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
     { id: "contact", label: "Contact" },

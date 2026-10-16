@@ -27,36 +27,33 @@ const pipelineSteps = [
   {
     icon: "api",
     title: "API source",
-    description: "Ingesting weather data for Accra via OpenWeatherMap REST endpoints.",
+    description: "Weather data for Accra from the OpenWeatherMap REST API.",
     live: false,
   },
   {
     icon: "input",
     title: "Ingest",
-    description: "Scheduled ingestion with validation before downstream processing.",
+    description: "A Next.js API route requests the latest reading and stores it each time it runs.",
     live: true,
-  },
-  {
-    icon: "transform",
-    title: "Transform",
-    description: "Schema normalization and quality checks in Python.",
   },
   {
     icon: "database",
     title: "PostgreSQL",
-    description: "Persistent storage with typed access patterns and reliable query performance.",
+    description: "Readings are stored in a weather_logs table on Supabase (PostgreSQL).",
   },
   {
     icon: "monitoring",
     title: "Dashboard",
-    description: "Live telemetry and trend visualization on this site.",
+    description: "The last 24 hours of readings are charted on this site.",
     final: true,
   },
 ];
 
 export default function PipelineShowcase() {
   const [chartData, setChartData] = useState<any[]>(dummyData);
-  const [avgTemp, setAvgTemp] = useState<string>("28.4");
+  const [avgTemp, setAvgTemp] = useState<string | null>(null);
+  const [readingCount, setReadingCount] = useState<number | null>(null);
+  const [isLive, setIsLive] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -86,6 +83,8 @@ export default function PipelineShowcase() {
             temp: parseFloat(row.temp.toFixed(1)),
           }));
           setChartData(parsed);
+          setIsLive(true);
+          setReadingCount(data.length);
 
           const sum = data.reduce((acc: number, row: any) => acc + row.temp, 0);
           setAvgTemp((sum / data.length).toFixed(1));
@@ -101,9 +100,9 @@ export default function PipelineShowcase() {
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="pipeline">
       <SectionHeader
-        eyebrow="Pipeline"
-        title="Live data pipeline"
-        description="This pipeline pulls from an external API, stores records in PostgreSQL, and charts live weather data from Accra."
+        eyebrow="Live project"
+        title="Live database project"
+        description="A small project that pulls weather data for Accra from an external API, stores it in a PostgreSQL table, and charts it here. Sample data is shown until enough live readings exist."
       />
 
       <div className="flex flex-col lg:flex-row gap-8 items-stretch">
@@ -141,7 +140,9 @@ export default function PipelineShowcase() {
               <h3 className="text-base font-semibold text-[var(--color-fg-primary)]">
                 Temperature trend
               </h3>
-              <p className="text-sm text-[var(--color-fg-muted)] mt-1">Accra, last 24 hours</p>
+              <p className="text-sm text-[var(--color-fg-muted)] mt-1">
+                {isLive ? "Accra, last 24 hours" : "Accra, sample data"}
+              </p>
             </div>
             <span className="material-symbols-outlined text-[var(--color-brand)]">insights</span>
           </div>
@@ -205,11 +206,13 @@ export default function PipelineShowcase() {
           <div className="mt-6 grid grid-cols-2 gap-3">
             <div className="rounded-lg p-4 bg-[var(--color-canvas-subtle)] border border-[var(--color-stroke-subtle)]">
               <span className="block text-xs text-[var(--color-fg-muted)] mb-1">Average</span>
-              <span className="text-xl font-semibold text-[var(--color-fg-primary)]">{avgTemp}°C</span>
+              <span className="text-xl font-semibold text-[var(--color-fg-primary)]">{avgTemp === null ? "n/a" : `${avgTemp}°C`}</span>
             </div>
             <div className="rounded-lg p-4 bg-[var(--color-canvas-subtle)] border border-[var(--color-stroke-subtle)]">
-              <span className="block text-xs text-[var(--color-fg-muted)] mb-1">Uptime</span>
-              <span className="text-xl font-semibold text-[var(--color-brand)]">99.9%</span>
+              <span className="block text-xs text-[var(--color-fg-muted)] mb-1">Readings (24h)</span>
+              <span className="text-xl font-semibold text-[var(--color-brand)]">
+                {readingCount === null ? "n/a" : readingCount}
+              </span>
             </div>
           </div>
         </div>

@@ -23,8 +23,8 @@ export default function Contact() {
   const infoItems = [
     { label: "Status", value: "Open to opportunities", highlight: true },
     { label: "Location", value: "Accra, Ghana 🇬🇭" },
-    { label: "Focus", value: "Data Engineering" },
-    { label: "Target markets", value: "Germany & Switzerland" },
+    { label: "Focus", value: "Database Administration" },
+    { label: "Open to", value: "Remote, on-site, or relocation" },
   ];
 
   return (

@@ -1,48 +1,41 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SectionHeader from "./SectionHeader";
 
+const skillCategories = [
+  {
+    title: "Database administration",
+    items: [
+      { name: "Roles & permissions", detail: "GRANT/REVOKE, group roles, least privilege" },
+      { name: "Backup & recovery", detail: "pg_dump, psql restore, verified restores" },
+      { name: "Monitoring & tuning", detail: "EXPLAIN ANALYZE, pg_stat_statements, indexing" },
+      { name: "Maintenance", detail: "VACUUM and ANALYZE" },
+    ],
+  },
+  {
+    title: "Foundations",
+    items: [
+      { name: "SQL / PostgreSQL", detail: "CTEs, views, window functions, subqueries" },
+      { name: "Database design", detail: "ER modeling, normalization to 3NF, keys" },
+      { name: "Linux & Git", detail: "Ubuntu, Bash, version control" },
+      { name: "Python & pandas", detail: "Data cleaning and scripting" },
+    ],
+  },
+];
+
+const learning = [
+  "Database security: encryption, auditing, row-level security",
+  "Stored procedures and triggers",
+  "Cloud managed databases and SQL Server basics",
+  "Scripting and scheduled maintenance jobs",
+];
+
 export default function Skills() {
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setAnimate(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const skillCategories = [
-    {
-      title: "Core engineering",
-      items: [
-        { name: "Python", detail: "ETL, automation & data quality" },
-        { name: "SQL / PostgreSQL", detail: "Modeling, optimization & analytics" },
-        { name: "Docker & Linux", detail: "Reproducible deployments" },
-        { name: "Git & GitHub", detail: "Version control & collaborative workflows" },
-      ],
-    },
-    {
-      title: "Data platform",
-      items: [
-        { name: "PostgreSQL", detail: "Production storage & schema design" },
-        { name: "pandas & sqlalchemy", detail: "Transformation pipelines" },
-      ],
-    },
-  ];
-
-  const competencies = [
-    { name: "Python", value: 95 },
-    { name: "SQL & PostgreSQL", value: 92 },
-    { name: "Pipeline design", value: 88 },
-    { name: "Cloud & DevOps", value: 82 },
-  ];
-
   return (
     <section className="px-gutter max-w-container-max mx-auto py-section-gap" id="skills">
       <SectionHeader
         eyebrow="Skills"
         title="What I bring to a team"
-        description="Strong data engineering skills and a practical focus on shipping and maintaining production systems."
+        description="Hands-on PostgreSQL administration skills and a careful, verify-first approach to working with data."
         className="mb-10"
       />
 
@@ -72,27 +65,18 @@ export default function Skills() {
         <div className="flex-1 lg:max-w-md">
           <div className="card p-6 h-full">
             <h4 className="text-sm font-semibold text-[var(--color-fg-primary)] mb-6">
-              Strength overview
+              Currently learning
             </h4>
-            <div className="space-y-5">
-              {competencies.map((comp) => (
-                <div key={comp.name} className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-[var(--color-fg-secondary)]">{comp.name}</span>
-                    <span className="text-[var(--color-fg-muted)] font-medium">{comp.value}%</span>
-                  </div>
-                  <div className="w-full h-1.5 rounded-full bg-[var(--color-canvas-subtle)] overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all duration-1000 ease-out"
-                      style={{
-                        width: animate ? `${comp.value}%` : "0%",
-                        background: "var(--color-brand)",
-                      }}
-                    />
-                  </div>
-                </div>
+            <ul className="space-y-4">
+              {learning.map((item) => (
+                <li
+                  key={item}
+                  className="text-sm text-[var(--color-fg-secondary)] leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[var(--color-brand)]"
+                >
+                  {item}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>

@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dan Nyarkoh Andoh | Data Engineer",
+  title: "Dan Nyarkoh Andoh | Junior Database Administrator",
   description:
-    "Data Engineer based in Accra, Ghana, building reliable pipelines, cloud infrastructure, and insights at scale.",
+    "Aspiring junior database administrator in Accra, Ghana, focused on PostgreSQL, backup and recovery, access control, and database security.",
 };
 
 export default function RootLayout({

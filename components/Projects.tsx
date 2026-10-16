@@ -1,30 +1,33 @@
 import React from "react";
 import SectionHeader from "./SectionHeader";
 
-const projectList = [
+type Project = {
+  title: string;
+  status?: string;
+  description: string;
+  tags: string[];
+  image?: string;
+  liveHref?: string;
+  repoHref?: string;
+};
+
+const projectList: Project[] = [
   {
-    title: "Weather Pipeline",
+    title: "Weather Database Project",
     description:
-      "A pipeline that ingests real-time weather data for Accra through the OpenWeatherMap API, stores readings in PostgreSQL, and visualizes temperature trends on this dashboard.",
-    tags: ["PostgreSQL", "Python", "OpenWeatherMap", "Next.js", "Recharts"],
+      "Fetches Accra weather readings from the OpenWeatherMap API through a Next.js route, stores them in a PostgreSQL table on Supabase, and charts the last 24 hours on this site.",
+    tags: ["PostgreSQL", "Supabase", "Next.js", "OpenWeatherMap", "Recharts"],
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCm_nFM9xJ5JeWylTD5EQkU5qS3w4yubzihxaIbmir9TfGbv7hdYqkT8loOoAl20ZW3hMgJ1UXKafzt5ICvddDEulFo5RCGseV8tUJeSf8oaPC7RHH_QXJiXAND9JyDX4quUlbOZNjFQhNgcNxMpW-dY87q6HbvoeCxKumUI3jjQyKDLqy0lW2_qaC6OXrkwT7NmvJXwsK-ZwnXYcPvZv0FEvGuu3wiBROQ6Kren3-E2WjdDsacjUKr4Cl2LcRJnufZOCBt8U3pBIy3",
+    liveHref: "#pipeline",
+    repoHref: "https://github.com/dna-data-eng/portfolio-website",
   },
   {
-    title: "Ghana Economic Dashboard",
+    title: "Vision Publicity Database",
+    status: "In progress",
     description:
-      "National fiscal data visualized through a custom API and a live web dashboard.",
-    tags: ["PostgreSQL", "React", "D3.js"],
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB_uyFtR5AuZqGLw8550oEYLxTQNfzEArKntmIkCzZ4dqqzUfTbnxXFdeSJxr4tpc_NzlDJHRmPlDmeFP_5ht0_HaX1r4H2rKc3j7IxS8QOvZ2JoyCanyEIkmpMCqVj4uIvu1Nu6KwxDTjq6p8073foUm0KaSxGZYyY-esV5XsC0e_VkjpqUgA6dBBIE9jpP2qY8W7nLIX0l6-Gte34qCY10hfJM_WIW6tBzsRyywy-StP9sXkoyGdA6wbQJ6S6qU_iaMp1npOS__yV",
-  },
-  {
-    title: "GitHub Activity Tracker",
-    description:
-      "Aggregating and analyzing commit patterns across large-scale open-source repositories.",
-    tags: ["Go", "Redis", "Docker"],
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC7WNEMlueNi0zqmVNRQviAq3JyuiuLKn0IQcekJfQR_LL-usG6NtRpXxay6pBRC0iMQmVvdNGJQxg1PWQjagE8QorxKCVVSkidZJCjDNhzVDuLEBms4rD0e7d-eyXYswR8jmRCimM5tS5PEOEmAZSmaR0CPl7x4UibIEXOYhqZwkE8QYorI2cT05hhLtVC1U3-3An6Mb4PD0Ey_ilh2Fm49Z3LifjjqbXGQdE2HL5xICKM8ISUCgHt_JAJpD-EqcWYI9Bh2mVBrxL0",
+      "A PostgreSQL database for a print shop covering customers, jobs, materials, and invoices. Planned scope: normalized schema, role-based access with least privilege, a tested backup and restore, and a stored procedure with a trigger.",
+    tags: ["PostgreSQL", "Schema design", "Access control", "Backup & restore"],
   },
 ];
 
@@ -34,26 +37,35 @@ export default function Projects() {
       <SectionHeader
         eyebrow="Work"
         title="Selected projects"
-        description="Systems I have built with a focus on reliability, clarity, and measurable outcomes."
+        description="Database work with a focus on reliability, security, and clear documentation."
       />
 
       <div className="mb-8">
-        <span className="badge badge-brand">Data engineering</span>
+        <span className="badge badge-brand">Database projects</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projectList.map((project) => (
           <article key={project.title} className="card-interactive flex flex-col overflow-hidden">
-            <div className="h-44 bg-[var(--color-canvas-subtle)] overflow-hidden">
-              <div
-                className="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105"
-                style={{ backgroundImage: `url('${project.image}')` }}
-              />
+            <div className="h-44 bg-[var(--color-canvas-subtle)] overflow-hidden flex items-center justify-center">
+              {project.image ? (
+                <div
+                  className="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105"
+                  style={{ backgroundImage: `url('${project.image}')` }}
+                />
+              ) : (
+                <span className="material-symbols-outlined text-5xl text-[var(--color-brand)]">
+                  database
+                </span>
+              )}
             </div>
             <div className="p-5 flex flex-col flex-1">
-              <h3 className="text-lg font-semibold text-[var(--color-fg-primary)] mb-2">
-                {project.title}
-              </h3>
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <h3 className="text-lg font-semibold text-[var(--color-fg-primary)]">
+                  {project.title}
+                </h3>
+                {project.status && <span className="badge">{project.status}</span>}
+              </div>
               <p className="text-sm text-[var(--color-fg-secondary)] mb-5 flex-1 leading-relaxed">
                 {project.description}
               </p>
@@ -64,14 +76,25 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              <div className="flex gap-2 pt-4 border-t border-[var(--color-stroke-subtle)]">
-                <a className="btn-primary flex-1 text-xs py-2" href="#">
-                  View live
-                </a>
-                <a className="btn-secondary flex-1 text-xs py-2" href="#">
-                  GitHub
-                </a>
-              </div>
+              {(project.liveHref || project.repoHref) && (
+                <div className="flex gap-2 pt-4 border-t border-[var(--color-stroke-subtle)]">
+                  {project.liveHref && (
+                    <a className="btn-primary flex-1 text-xs py-2" href={project.liveHref}>
+                      View live
+                    </a>
+                  )}
+                  {project.repoHref && (
+                    <a
+                      className="btn-secondary flex-1 text-xs py-2"
+                      href={project.repoHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </article>
         ))}

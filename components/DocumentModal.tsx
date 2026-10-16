@@ -44,7 +44,7 @@ export default function DocumentModal({ isOpen, onClose, type, fileUrl }: Docume
 
   if (!isOpen) return null;
 
-  const docTitle = type === "cv" ? "DATA_ENGINEER_CV.PDF" : "DATA_ENGINEER_RESUME.PDF";
+  const docTitle = type === "cv" ? "DAN_ANDOH_CV.PDF" : "DAN_ANDOH_RESUME.PDF";
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0a0a0a]/80 backdrop-blur-md">

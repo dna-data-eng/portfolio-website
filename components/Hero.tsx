@@ -24,13 +24,13 @@ export default function Hero({ onOpenModal }: HeroProps) {
 
       if (error) {
         console.error("Supabase count query error:", error);
-        setIngestedCount(1240);
+        setIngestedCount(-1);
         return;
       }
       setIngestedCount(count);
     } catch (e) {
       console.error(e);
-      setIngestedCount(1240);
+      setIngestedCount(-1);
     }
   };
 
@@ -49,7 +49,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
 
   const metaPills = [
     { label: "Available for work" },
-    { label: "Targeting Germany & Switzerland" },
+    { label: "Open to remote and relocation" },
     { label: "Learning Deutsch 🇩🇪" },
   ];
 
@@ -60,7 +60,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
     >
       <div className="max-w-3xl">
         <p className="text-sm font-medium text-[var(--color-brand)] mb-4">
-          Data Engineer, Accra, Ghana 🇬🇭
+          Aspiring Junior Database Administrator, Accra, Ghana 🇬🇭
         </p>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--color-fg-primary)] mb-6 leading-tight">
@@ -69,14 +69,14 @@ export default function Hero({ onOpenModal }: HeroProps) {
         </h1>
 
         <p className="text-lg md:text-xl text-[var(--color-fg-secondary)] mb-10 max-w-xl leading-relaxed">
-          I build data pipelines, engineer reliable infrastructure, and turn complex datasets into
-          clear insights. I hold myself to the same standard of craft you would expect on a
-          production platform team.
+          I work with PostgreSQL to design, secure, back up, and tune databases. I practise access
+          control, backup and recovery, query tuning, and routine maintenance, and I am building
+          toward database security.
         </p>
 
         <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8">
           <a className="btn-primary" href="#pipeline">
-            View my pipeline
+            View live project
             <span className="material-symbols-outlined text-base">arrow_forward</span>
           </a>
           <button type="button" className="btn-secondary" onClick={() => onOpenModal("cv", cvUrl)}>
@@ -116,17 +116,23 @@ export default function Hero({ onOpenModal }: HeroProps) {
             <div className="flex items-center gap-2">
               <span className="status-dot" aria-hidden="true" />
               <span className="text-sm font-medium text-[var(--color-fg-primary)]">
-                Live pipeline status
+                Live database status
               </span>
             </div>
-            <span className="badge badge-brand">Active</span>
+            <span className="badge badge-brand">
+              {ingestedCount !== null && ingestedCount < 0 ? "Offline" : "Active"}
+            </span>
           </div>
           <div className="mb-4">
             <span className="text-3xl font-semibold text-[var(--color-fg-primary)] block mb-1">
-              {ingestedCount === null ? "..." : ingestedCount.toLocaleString()}
+              {ingestedCount === null
+                ? "..."
+                : ingestedCount < 0
+                ? "Unavailable"
+                : ingestedCount.toLocaleString()}
             </span>
             <span className="text-sm text-[var(--color-fg-muted)]">
-              Weather records ingested today
+              Weather records stored today
             </span>
           </div>
           <div className="h-14 w-full">

@@ -4,19 +4,23 @@ import SectionHeader from "./SectionHeader";
 
 const skillGroups = [
   {
-    label: "Data Engineering",
+    label: "Database Administration",
     tags: [
       "PostgreSQL",
-      "Python",
-      "pandas",
-      "sqlalchemy",
-      "Data Pipelines",
-      "Window Functions",
+      "Roles & Permissions",
+      "Backup & Restore",
+      "Query Tuning",
+      "VACUUM & ANALYZE",
+      "Monitoring",
     ],
   },
   {
-    label: "DevOps",
-    tags: ["Docker", "Ubuntu 24.04", "Git & GitHub", "Bash Scripting"],
+    label: "SQL & Design",
+    tags: ["CTEs", "Window Functions", "Views", "Indexing", "Normalization"],
+  },
+  {
+    label: "Tools",
+    tags: ["Ubuntu 24.04", "Git & GitHub", "Bash Scripting", "Docker", "Python & pandas"],
   },
   {
     label: "Languages",
@@ -31,7 +35,7 @@ export default function About() {
         <SectionHeader
           eyebrow="About"
           title="A bit about me"
-          description="I'm an engineer first. I care about systems that are reliable, readable, and built to last."
+          description="I care about databases that are reliable, secure, and recoverable."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -51,21 +55,23 @@ export default function About() {
           <div>
             <div className="text-[var(--color-fg-secondary)] text-base leading-relaxed space-y-4 mb-10">
               <p>
-                I&apos;m Dan Nyarkoh Andoh, a Data Engineer based in Accra, Ghana. I build data
-                pipelines, engineer reliable infrastructure, and extract insights from complex
-                datasets.
+                I&apos;m Dan Nyarkoh Andoh, an aspiring junior database administrator based in Accra,
+                Ghana, and a student at the University of Cape Coast. I design, secure, back up, and
+                tune PostgreSQL databases.
               </p>
               <p>
-                My core stack centers on PostgreSQL for structured storage, Python (pandas,
-                sqlalchemy) for transformation, and Docker on Ubuntu for reproducible deployments.
+                My practice covers advanced SQL (CTEs, views, indexing), query diagnosis with
+                EXPLAIN ANALYZE, role-based access control, backup and restore with pg_dump, and
+                routine maintenance with VACUUM and ANALYZE.
               </p>
               <p>
-                I also use AI tools like Gemini, Claude, and Ollama to automate and improve data
-                workflows, with guardrails and observability built in from the start.
+                I use AI tools like Gemini, Claude, and Ollama to support my learning and speed up
+                routine work, and I verify what they produce before I rely on it.
               </p>
               <p>
-                I&apos;m currently looking for opportunities in Germany or Switzerland, and
-                learning Deutsch 🇩🇪 to grow my career in Europe.
+                I am looking for an internship or entry-level role in database administration or
+                database support, remote or on-site, and I am learning Deutsch 🇩🇪 alongside my
+                studies.
               </p>
             </div>
 

@@ -20,7 +20,17 @@ const skillGroups = [
   },
   {
     label: "Tools",
-    tags: ["Ubuntu 24.04", "Git & GitHub", "Bash Scripting", "Docker", "Python & pandas"],
+    tags: [
+      "pgAdmin",
+      "psql",
+      "pg_dump",
+      "pg_stat_statements",
+      "Ubuntu (WSL2)",
+      "PowerShell",
+      "Git & GitHub",
+      "Python & pandas",
+      "Supabase",
+    ],
   },
   {
     label: "Languages",
@@ -55,7 +65,7 @@ export default function About() {
           <div>
             <div className="text-[var(--color-fg-secondary)] text-base leading-relaxed space-y-4 mb-10">
               <p>
-                I&apos;m Dan Nyarkoh Andoh, an aspiring junior database administrator based in Accra,
+                I&apos;m Dan Nyarkoh Andoh, an aspiring junior database administrator based in Cape Coast,
                 Ghana, and a student at the University of Cape Coast. I design, secure, back up, and
                 tune PostgreSQL databases.
               </p>

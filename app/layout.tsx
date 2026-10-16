@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Dan Nyarkoh Andoh | Junior Database Administrator",
   description:
-    "Aspiring junior database administrator in Accra, Ghana, focused on PostgreSQL, backup and recovery, access control, and database security.",
+    "Aspiring junior database administrator in Cape Coast, Ghana, focused on PostgreSQL, backup and recovery, access control, and database security.",
 };
 
 export default function RootLayout({

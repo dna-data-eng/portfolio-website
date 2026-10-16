@@ -59,7 +59,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
     >
       <div className="max-w-3xl">
         <p className="text-sm font-medium text-[var(--color-brand)] mb-4">
-          Aspiring Junior Database Administrator, Accra, Ghana 🇬🇭
+          Aspiring Junior Database Administrator, Cape Coast, Ghana 🇬🇭
         </p>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--color-fg-primary)] mb-6 leading-tight">

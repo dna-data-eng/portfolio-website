@@ -56,7 +56,9 @@ export default function Navbar() {
         </a>
 
         <div className="hidden lg:flex gap-1 items-center">
-          {navLinks.map((link) => (
+          {navLinks
+            .filter((link) => link.id !== "contact")
+            .map((link) => (
             <a
               key={link.id}
               className={`px-3 py-2 text-[13px] font-medium rounded-md transition-colors ${

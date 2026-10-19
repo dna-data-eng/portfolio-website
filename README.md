@@ -5,7 +5,7 @@ Portfolio site for an aspiring junior database administrator, built with Next.js
 ## What is on the site
 
 - About, experience, skills, and contact details
-- A small live project: weather readings for Accra are fetched from OpenWeatherMap, stored in a PostgreSQL table, and charted for the last 24 hours
+- A small database project: weather readings for Accra are fetched from OpenWeatherMap through an API route and stored in a PostgreSQL table
 - CV and resume viewer (PDF files are served from a Supabase storage bucket)
 
 ## Run locally

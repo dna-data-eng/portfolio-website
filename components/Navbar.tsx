@@ -23,7 +23,6 @@ export default function Navbar() {
         "skills",
         "tools",
         "projects",
-        "pipeline",
         "experience",
         "certifications",
         "contact",
@@ -34,7 +33,7 @@ export default function Navbar() {
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el && scrollPosition >= el.offsetTop) {
-          current = section === "pipeline" ? "projects" : section;
+          current = section;
         }
       }
       setActiveSection(current);

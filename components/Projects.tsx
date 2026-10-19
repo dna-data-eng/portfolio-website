@@ -32,9 +32,8 @@ const projectList: Project[] = [
     title: "Weather Database Project",
     icon: "partly_cloudy_day",
     description:
-      "Fetches Accra weather readings from the OpenWeatherMap API through a Next.js route, stores them in a PostgreSQL table on Supabase, and charts the last 24 hours on this site.",
-    tags: ["PostgreSQL", "Supabase", "Next.js", "OpenWeatherMap", "Recharts"],
-    liveHref: "#pipeline",
+      "Fetches Accra weather readings from the OpenWeatherMap API through a Next.js route and stores them in a PostgreSQL table on Supabase, with the table designed to hold timestamped readings.",
+    tags: ["PostgreSQL", "Supabase", "Next.js", "OpenWeatherMap"],
     repoHref: "https://github.com/dna-data-eng/portfolio-website",
   },
 ];
